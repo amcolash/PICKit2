@@ -1,0 +1,991 @@
+[p LITE_MODE AUTOSTATIC PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1455 ]
+[d frameptr 6 ]
+"840 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\usb.c
+[e E2764 StandardControlRequest `uc
+GET_STATUS 0
+CLEAR_FEATURE 1
+SET_FEATURE 3
+SET_ADDRESS 5
+GET_DESCRIPTOR 6
+SET_DESCRIPTOR 7
+GET_CONFIGURATION 8
+SET_CONFIGURATION 9
+GET_INTERFACE 10
+SET_INTERFACE 11
+SYNCH_FRAME 12
+]
+"844
+[e E2776 DescriptorTypes `uc
+DESC_DEVICE 1
+DESC_CONFIGURATION 2
+DESC_STRING 3
+DESC_INTERFACE 4
+DESC_ENDPOINT 5
+DESC_DEVICE_QUALIFIER 6
+DESC_OTHER_SPEED_CONFIGURATION 7
+DESC_INTERFACE_POWER 8
+DESC_OTG 9
+DESC_DEBUG 10
+DESC_INTERFACE_ASSOCIATION 11
+]
+"1149
+[e E2759 RequestType `uc
+REQUEST_TYPE_STANDARD 0
+REQUEST_TYPE_CLASS 1
+REQUEST_TYPE_VENDOR 2
+REQUEST_TYPE_RESERVED 3
+]
+"1355
+[e E2736 PID `uc
+PID_OUT 1
+PID_IN 9
+PID_SOF 5
+PID_SETUP 13
+PID_DATA0 3
+PID_DATA1 11
+PID_DATA2 7
+PID_MDATA 15
+PID_ACK 2
+PID_NAK 10
+PID_STALL 14
+PID_NYET 6
+PID_PRE 12
+PID_ERR 12
+PID_SPLIT 8
+PID_PING 4
+PID_RESERVED 0
+]
+"87 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\usb_descriptors.c
+[e E238 DescriptorTypes `uc
+DESC_DEVICE 1
+DESC_CONFIGURATION 2
+DESC_STRING 3
+DESC_INTERFACE 4
+DESC_ENDPOINT 5
+DESC_DEVICE_QUALIFIER 6
+DESC_OTHER_SPEED_CONFIGURATION 7
+DESC_INTERFACE_POWER 8
+DESC_OTG 9
+DESC_DEBUG 10
+DESC_INTERFACE_ASSOCIATION 11
+]
+"89
+[e E250 DeviceClassCodes `uc
+DEVICE_CLASS_DEFINED_AT_INTERFACE_LEVEL 0
+DEVICE_CLASS_MISC 239
+DEVICE_CLASS_APPLICATION_SPECIFIC 254
+DEVICE_CLASS_VENDOR_SPECIFIC 255
+]
+"155
+[e E324 CDCDescriptorTypes `uc
+DESC_CS_INTERFACE 36
+DESC_CS_ENDPOINT 37
+]
+"156
+[e E327 CDCFunctionalDescriptorSubtypes `uc
+CDC_FUNCTIONAL_DESCRIPTOR_SUBTYPE_HEADER 0
+CDC_FUNCTIONAL_DESCRIPTOR_SUBTYPE_ACM 2
+CDC_FUNCTIONAL_DESCRIPTOR_SUBTYPE_UNION 6
+]
+"167
+[e E331 CDCACMCapabilities `uc
+CDC_ACM_CAPABILITY_COMM_FEATURES 1
+CDC_ACM_CAPABILITY_LINE_CODINGS 2
+CDC_ACM_CAPABILITY_SEND_BREAK 4
+CDC_ACM_CAPABILITY_NETWORK_CONNECTION 8
+]
+"184
+[e E255 EndpointAttributes `uc
+EP_CONTROL 0
+EP_ISOCHRONOUS 1
+EP_BULK 2
+EP_INTERRUPT 3
+]
+"464 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\doprnt.c
+[v _printf printf `(i  1 e 2 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\llmod.c
+[v ___llmod __llmod `(ul  1 e 4 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\memset.c
+[v _memset memset `(*.39v  1 e 1 0 ]
+[v i1_memset memset `(*.39v  1 e 1 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+[v i1___wmul __wmul `(ui  1 e 2 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+[v i1___bmul __bmul `(uc  1 e 1 0 ]
+"29 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\main.c
+[v _isr isr `II(v  1 e 1 0 ]
+"41
+[v _main main `(v  1 e 1 0 ]
+"71
+[v _putch putch `(v  1 e 1 0 ]
+"94
+[v _thermometer_init thermometer_init `(v  1 e 1 0 ]
+"108
+[v _oscillator_init oscillator_init `(v  1 e 1 0 ]
+"116
+[v _timer_init timer_init `(v  1 e 1 0 ]
+"130
+[v _gpio_init gpio_init `(v  1 e 1 0 ]
+"449 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\usb.c
+[v _pic16_linear_addr pic16_linear_addr `(ui  1 s 2 pic16_linear_addr ]
+[v i1_pic16_linear_addr pic16_linear_addr `(ui  1 s 2 i1_pic16_linear_addr ]
+"467
+[v _reset_ep0_data_stage reset_ep0_data_stage `(v  1 s 1 reset_ep0_data_stage ]
+[v i1_reset_ep0_data_stage reset_ep0_data_stage `(v  1 s 1 i1_reset_ep0_data_stage ]
+"487
+[v _usb_init usb_init `(v  1 e 1 0 ]
+[v i1_usb_init usb_init `(v  1 e 1 0 ]
+"666
+[v _reset_bd0_out reset_bd0_out `(v  1 s 1 reset_bd0_out ]
+"678
+[v _stall_ep0 stall_ep0 `(v  1 s 1 stall_ep0 ]
+"691
+[v _clear_ep0_stall clear_ep0_stall `(v  1 s 1 clear_ep0_stall ]
+"705
+[v _stall_ep_in stall_ep_in `(v  1 s 1 stall_ep_in ]
+"716
+[v _stall_ep_out stall_ep_out `(v  1 s 1 stall_ep_out ]
+"727
+[v _send_zero_length_packet_ep0 send_zero_length_packet_ep0 `(v  1 s 1 send_zero_length_packet_ep0 ]
+"740
+[v _usb_send_in_buffer_0 usb_send_in_buffer_0 `(v  1 s 1 usb_send_in_buffer_0 ]
+"811
+[v _start_control_return start_control_return `(v  1 s 1 start_control_return ]
+"825
+[v _handle_standard_control_request handle_standard_control_request `T(c  1 s 1 handle_standard_control_request ]
+"1117
+[v _handle_ep0_setup handle_ep0_setup `T(v  1 s 1 handle_ep0_setup ]
+"1207
+[v _handle_ep0_out handle_ep0_out `T(v  1 s 1 handle_ep0_out ]
+"1269
+[v _handle_ep0_in handle_ep0_in `T(v  1 s 1 handle_ep0_in ]
+"1314
+[v _usb_service usb_service `(v  1 e 1 0 ]
+"1427
+[v _usb_get_configuration usb_get_configuration `(uc  1 e 1 0 ]
+"1432
+[v _usb_get_in_buffer usb_get_in_buffer `(*.39uc  1 e 1 0 ]
+"1444
+[v _usb_send_in_buffer usb_send_in_buffer `(v  1 e 1 0 ]
+"1486
+[v _usb_in_endpoint_busy usb_in_endpoint_busy `(uc  1 e 1 0 ]
+"1496
+[v _usb_in_endpoint_halted usb_in_endpoint_halted `(uc  1 e 1 0 ]
+[v i1_usb_in_endpoint_halted usb_in_endpoint_halted `(uc  1 e 1 0 ]
+"283 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\usb_descriptors.c
+[v _usb_application_get_string usb_application_get_string `(i  1 e 2 0 ]
+[s S289 . 1 `uc 1 IOCIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 IOCIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"360 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f1455.h
+[s S298 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 T0IE 1 0 :1:5 
+]
+[u S303 . 1 `S289 1 . 1 0 `S298 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES303  1 e 1 @11 ]
+[s S361 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+]
+"473
+[u S368 . 1 `S361 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES368  1 e 1 @14 ]
+[s S19 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 SSP1IF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 TMR1GIF 1 0 :1:7 
+]
+"524
+[u S28 . 1 `S19 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES28  1 e 1 @17 ]
+[s S789 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 ACTIF 1 0 :1:1 
+`uc 1 USBIF 1 0 :1:2 
+`uc 1 BCL1IF 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 C1IF 1 0 :1:5 
+`uc 1 C2IF 1 0 :1:6 
+`uc 1 OSFIF 1 0 :1:7 
+]
+"580
+[u S798 . 1 `S789 1 . 1 0 ]
+[v _PIR2bits PIR2bits `VES798  1 e 1 @18 ]
+"836
+[v _PR2 PR2 `VEuc  1 e 1 @27 ]
+"855
+[v _T2CON T2CON `VEuc  1 e 1 @28 ]
+[s S260 . 1 `uc 1 T2CKPS 1 0 :2:0 
+`uc 1 TMR2ON 1 0 :1:2 
+`uc 1 T2OUTPS 1 0 :4:3 
+]
+"876
+[s S264 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+`uc 1 T2CKPS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 T2OUTPS0 1 0 :1:3 
+`uc 1 T2OUTPS1 1 0 :1:4 
+`uc 1 T2OUTPS2 1 0 :1:5 
+`uc 1 T2OUTPS3 1 0 :1:6 
+]
+[u S272 . 1 `S260 1 . 1 0 `S264 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES272  1 e 1 @28 ]
+[s S344 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+]
+"966
+[u S351 . 1 `S344 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES351  1 e 1 @142 ]
+[s S321 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 SSP1IE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 TMR1GIE 1 0 :1:7 
+]
+"1017
+[u S330 . 1 `S321 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES330  1 e 1 @145 ]
+[s S628 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 ACTIE 1 0 :1:1 
+`uc 1 USBIE 1 0 :1:2 
+`uc 1 BCL1IE 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 C1IE 1 0 :1:5 
+`uc 1 C2IE 1 0 :1:6 
+`uc 1 OSFIE 1 0 :1:7 
+]
+"1073
+[u S637 . 1 `S628 1 . 1 0 ]
+[v _PIE2bits PIE2bits `VES637  1 e 1 @146 ]
+[s S210 . 1 `uc 1 SCS 1 0 :2:0 
+`uc 1 IRCF 1 0 :4:2 
+`uc 1 SPLLMULT 1 0 :1:6 
+`uc 1 SPLLEN 1 0 :1:7 
+]
+"1387
+[s S215 . 1 `uc 1 SCS0 1 0 :1:0 
+`uc 1 SCS1 1 0 :1:1 
+`uc 1 IRCF0 1 0 :1:2 
+`uc 1 IRCF1 1 0 :1:3 
+`uc 1 IRCF2 1 0 :1:4 
+`uc 1 IRCF3 1 0 :1:5 
+]
+[u S222 . 1 `S210 1 . 1 0 `S215 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES222  1 e 1 @153 ]
+"1497
+[v _ADRESL ADRESL `VEuc  1 e 1 @155 ]
+"1516
+[v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
+[s S92 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :5:2 
+]
+"1560
+[s S96 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 ADGO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+`uc 1 CHS4 1 0 :1:6 
+]
+[s S104 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+]
+[u S107 . 1 `S92 1 . 1 0 `S96 1 . 1 0 `S104 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES107  1 e 1 @157 ]
+[s S182 . 1 `uc 1 ADPREF 1 0 :2:0 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS 1 0 :3:4 
+`uc 1 ADFM 1 0 :1:7 
+]
+"1635
+[s S187 . 1 `uc 1 ADPREF0 1 0 :1:0 
+`uc 1 ADPREF1 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS0 1 0 :1:4 
+`uc 1 ADCS1 1 0 :1:5 
+`uc 1 ADCS2 1 0 :1:6 
+]
+[u S194 . 1 `S182 1 . 1 0 `S187 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES194  1 e 1 @158 ]
+[s S70 . 1 `uc 1 LATC0 1 0 :1:0 
+`uc 1 LATC1 1 0 :1:1 
+`uc 1 LATC2 1 0 :1:2 
+`uc 1 LATC3 1 0 :1:3 
+`uc 1 LATC4 1 0 :1:4 
+`uc 1 LATC5 1 0 :1:5 
+]
+"1761
+[u S77 . 1 `S70 1 . 1 0 ]
+[v _LATCbits LATCbits `VES77  1 e 1 @270 ]
+[s S154 . 1 `uc 1 ADFVR 1 0 :2:0 
+`uc 1 CDAFVR 1 0 :2:2 
+`uc 1 TSRNG 1 0 :1:4 
+`uc 1 TSEN 1 0 :1:5 
+`uc 1 FVRRDY 1 0 :1:6 
+`uc 1 FVREN 1 0 :1:7 
+]
+"2127
+[s S161 . 1 `uc 1 ADFVR0 1 0 :1:0 
+`uc 1 ADFVR1 1 0 :1:1 
+`uc 1 CDAFVR0 1 0 :1:2 
+`uc 1 CDAFVR1 1 0 :1:3 
+]
+[u S166 . 1 `S154 1 . 1 0 `S161 1 . 1 0 ]
+[v _FVRCONbits FVRCONbits `VES166  1 e 1 @279 ]
+"2331
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"2359
+[v _ANSELC ANSELC `VEuc  1 e 1 @398 ]
+[s S238 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 ACTORS 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 ACTLOCK 1 0 :1:3 
+`uc 1 ACTSRC 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 ACTUD 1 0 :1:6 
+`uc 1 ACTEN 1 0 :1:7 
+]
+"3858
+[u S247 . 1 `S238 1 . 1 0 ]
+[v _ACTCONbits ACTCONbits `VES247  1 e 1 @923 ]
+[s S553 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 SUSPND 1 0 :1:1 
+`uc 1 RESUME 1 0 :1:2 
+`uc 1 USBEN 1 0 :1:3 
+`uc 1 PKTDIS 1 0 :1:4 
+`uc 1 SE0 1 0 :1:5 
+`uc 1 PPBRST 1 0 :1:6 
+]
+"4548
+[u S561 . 1 `S553 1 . 1 0 ]
+[v _UCONbits UCONbits `VES561  1 e 1 @3726 ]
+[s S745 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 PPBI 1 0 :1:1 
+`uc 1 DIR 1 0 :1:2 
+`uc 1 ENDP 1 0 :4:3 
+]
+"4602
+[s S750 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 ENDP0 1 0 :1:3 
+`uc 1 ENDP1 1 0 :1:4 
+`uc 1 ENDP2 1 0 :1:5 
+`uc 1 ENDP3 1 0 :1:6 
+]
+[u S756 . 1 `S745 1 . 1 0 `S750 1 . 1 0 ]
+[v _USTATbits USTATbits `VES756  1 e 1 @3727 ]
+"4641
+[v _UIR UIR `VEuc  1 e 1 @3728 ]
+[s S572 . 1 `uc 1 URSTIF 1 0 :1:0 
+`uc 1 UERRIF 1 0 :1:1 
+`uc 1 ACTVIF 1 0 :1:2 
+`uc 1 TRNIF 1 0 :1:3 
+`uc 1 IDLEIF 1 0 :1:4 
+`uc 1 STALLIF 1 0 :1:5 
+`uc 1 SOFIF 1 0 :1:6 
+]
+"4657
+[u S580 . 1 `S572 1 . 1 0 ]
+[v _UIRbits UIRbits `VES580  1 e 1 @3728 ]
+[s S527 . 1 `uc 1 PPB 1 0 :2:0 
+`uc 1 FSEN 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 UPUEN 1 0 :1:4 
+`uc 1 . 1 0 :2:5 
+`uc 1 UTEYE 1 0 :1:7 
+]
+"4715
+[s S534 . 1 `uc 1 PPB0 1 0 :1:0 
+`uc 1 PPB1 1 0 :1:1 
+]
+[u S537 . 1 `S527 1 . 1 0 `S534 1 . 1 0 ]
+[v _UCFGbits UCFGbits `VES537  1 e 1 @3729 ]
+"4749
+[v _UIE UIE `VEuc  1 e 1 @3730 ]
+[s S592 . 1 `uc 1 URSTIE 1 0 :1:0 
+`uc 1 UERRIE 1 0 :1:1 
+`uc 1 ACTVIE 1 0 :1:2 
+`uc 1 TRNIE 1 0 :1:3 
+`uc 1 IDLEIE 1 0 :1:4 
+`uc 1 STALLIE 1 0 :1:5 
+`uc 1 SOFIE 1 0 :1:6 
+]
+"4765
+[u S600 . 1 `S592 1 . 1 0 ]
+[v _UIEbits UIEbits `VES600  1 e 1 @3730 ]
+"4952
+[v _UADDR UADDR `VEuc  1 e 1 @3734 ]
+"5007
+[v _UEIE UEIE `VEuc  1 e 1 @3735 ]
+"5057
+[v _UEP0 UEP0 `VEuc  1 e 1 @3736 ]
+"354 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\doprnt.c
+[v _dpowers dpowers `DCC[5]ui  1 s 10 dpowers ]
+"15 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\main.c
+[v _tempADC tempADC `VEui  1 e 2 0 ]
+"16
+[v _millis millis `VEul  1 e 4 0 ]
+[s S476 . 1 `uc 1 BC8 1 0 :1:0 
+`uc 1 BC9 1 0 :1:1 
+`uc 1 PID 1 0 :4:2 
+`uc 1 reserved 1 0 :1:6 
+`uc 1 UOWN 1 0 :1:7 
+]
+"193 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\usb.c
+[s S482 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 BSTALL 1 0 :1:2 
+`uc 1 DTSEN 1 0 :1:3 
+`uc 1 INCDIS 1 0 :1:4 
+`uc 1 KEN 1 0 :1:5 
+`uc 1 DTS 1 0 :1:6 
+`uc 1 . 1 0 :1:7 
+]
+[u S491 . 1 `S476 1 . 1 0 `S482 1 . 1 0 `uc 1 BDnSTAT 1 0 ]
+[s S495 buffer_descriptor 4 `S491 1 STAT 1 0 `uc 1 BDnCNT 1 1 `ui 1 BDnADR 2 2 ]
+[v _bds bds `[6]S495  1 s 24 bds ]
+[s S505 . 155 `[1][8]uc 1 ep_0_out_buf 8 0 `[1][8]uc 1 ep_0_in_buf 8 8 `[1][1]uc 1 ep_1_out_buf 1 16 `[1][10]uc 1 ep_1_in_buf 10 17 `[1][64]uc 1 ep_2_out_buf 64 27 `[1][64]uc 1 ep_2_in_buf 64 91 ]
+"291
+[v _ep_buffers ep_buffers `S505  1 s 155 ep_buffers ]
+[s S514 ep0_buf 5 `DCC*.39uc 1 out 2 0 `DCC*.39uc 1 in 2 2 `uc 1 flags 1 4 ]
+"365
+[v _ep0_buf ep0_buf `S514  1 s 5 ep0_buf ]
+[s S520 ep_buf 7 `DCC*.39uc 1 out 2 0 `DCC*.39uc 1 in 2 2 `DCCuc 1 out_len 1 4 `DCCuc 1 in_len 1 5 `uc 1 flags 1 6 ]
+"367
+[v _ep_buf ep_buf `[3]S520  1 s 21 ep_buf ]
+"423
+[v _addr_pending addr_pending `uc  1 s 1 addr_pending ]
+"424
+[v _addr addr `uc  1 s 1 addr ]
+"425
+[v _g_configuration g_configuration `uc  1 s 1 g_configuration ]
+"426
+[v _control_need_zlp control_need_zlp `uc  1 s 1 control_need_zlp ]
+"427
+[v _returning_short returning_short `uc  1 s 1 returning_short ]
+"430
+[v _ep0_data_stage_callback ep0_data_stage_callback `*.37(v  1 s 2 ep0_data_stage_callback ]
+"431
+[v _ep0_data_stage_in_buffer ep0_data_stage_in_buffer `*.26uc  1 s 2 ep0_data_stage_in_buffer ]
+"432
+[v _ep0_data_stage_out_buffer ep0_data_stage_out_buffer `*.1uc  1 s 1 ep0_data_stage_out_buffer ]
+"433
+[v _ep0_data_stage_buf_remaining ep0_data_stage_buf_remaining `ui  1 s 2 ep0_data_stage_buf_remaining ]
+"434
+[v _ep0_data_stage_context ep0_data_stage_context `*.1v  1 s 1 ep0_data_stage_context ]
+"435
+[v _ep0_data_stage_direc ep0_data_stage_direc `uc  1 s 1 ep0_data_stage_direc ]
+[s S694 device_descriptor 18 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `ui 1 bcdUSB 2 2 `uc 1 bDeviceClass 1 4 `uc 1 bDeviceSubclass 1 5 `uc 1 bDeviceProtocol 1 6 `uc 1 bMaxPacketSize0 1 7 `ui 1 idVendor 2 8 `ui 1 idProduct 2 10 `ui 1 bcdDevice 2 12 `uc 1 iManufacturer 1 14 `uc 1 iProduct 1 15 `uc 1 iSerialNumber 1 16 `uc 1 bNumConfigurations 1 17 ]
+"84 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\usb_descriptors.c
+[v _this_device_descriptor this_device_descriptor `DCCS694  1 e 18 0 ]
+[s S724 configuration_descriptor 9 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `ui 1 wTotalLength 2 2 `uc 1 bNumInterfaces 1 4 `uc 1 bConfigurationValue 1 5 `uc 1 iConfiguration 1 6 `uc 1 bmAttributes 1 7 `uc 1 bMaxPower 1 8 ]
+"112
+[s S1184 interface_association_descriptor 8 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `uc 1 bFirstInterface 1 2 `uc 1 bInterfaceCount 1 3 `uc 1 bFunctionClass 1 4 `uc 1 bFunctionSubClass 1 5 `uc 1 bFunctionProtocol 1 6 `uc 1 iFunction 1 7 ]
+[s S1193 interface_descriptor 9 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `uc 1 bInterfaceNumber 1 2 `uc 1 bAlternateSetting 1 3 `uc 1 bNumEndpoints 1 4 `uc 1 bInterfaceClass 1 5 `uc 1 bInterfaceSubclass 1 6 `uc 1 bInterfaceProtocol 1 7 `uc 1 iInterface 1 8 ]
+[s S1203 cdc_functional_descriptor_header 5 `uc 1 bFunctionLength 1 0 `uc 1 bDescriptorType 1 1 `uc 1 bDescriptorSubtype 1 2 `ui 1 bcdCDC 2 3 ]
+[s S1208 cdc_acm_functional_descriptor 4 `uc 1 bFunctionLength 1 0 `uc 1 bDescriptorType 1 1 `uc 1 bDescriptorSubtype 1 2 `uc 1 bmCapabilities 1 3 ]
+[s S1213 cdc_union_functional_descriptor 5 `uc 1 bFunctionLength 1 0 `uc 1 bDescriptorType 1 1 `uc 1 bDescriptorSubtype 1 2 `uc 1 bMasterInterface 1 3 `uc 1 bSlaveInterface0 1 4 ]
+[s S1219 endpoint_descriptor 7 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `uc 1 bEndpointAddress 1 2 `uc 1 bmAttributes 1 3 `ui 1 wMaxPacketSize 2 4 `uc 1 bInterval 1 6 ]
+[s S1226 configuration_1_packet 70 `S724 1 config 9 0 `S1184 1 iad 8 9 `S1193 1 cdc_class_interface 9 17 `S1203 1 cdc_func_header 5 26 `S1208 1 cdc_acm 4 31 `S1213 1 cdc_union 5 35 `S1219 1 cdc_ep 7 40 `S1193 1 cdc_data_interface 9 47 `S1219 1 data_ep_in 7 56 `S1219 1 data_ep_out 7 63 ]
+[v _configuration_1 configuration_1 `DCCS1226  1 s 70 configuration_1 ]
+[s S1254 . 4 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `ui 1 lang 2 2 ]
+"236
+[v _str00 str00 `DCCS1254  1 s 4 str00 ]
+[s S1258 . 28 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `[13]ui 1 chars 26 2 ]
+"242
+[v _vendor_string vendor_string `DCCS1258  1 s 28 vendor_string ]
+[s S1262 . 48 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `[23]ui 1 chars 46 2 ]
+"248
+[v _product_string product_string `DCCS1262  1 s 48 product_string ]
+"254
+[v _cdc_interface_string cdc_interface_string `DCCS1258  1 s 28 cdc_interface_string ]
+[s S1270 . 38 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `[18]ui 1 chars 36 2 ]
+"260
+[v _cdc_data_string cdc_data_string `DCCS1270  1 s 38 cdc_data_string ]
+[s S1274 . 36 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `[17]ui 1 chars 34 2 ]
+"266
+[v _serial_number serial_number `DCCS1274  1 s 36 serial_number ]
+[s S724 configuration_descriptor 9 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `ui 1 wTotalLength 2 2 `uc 1 bNumInterfaces 1 4 `uc 1 bConfigurationValue 1 5 `uc 1 iConfiguration 1 6 `uc 1 bmAttributes 1 7 `uc 1 bMaxPower 1 8 ]
+"332
+[v _usb_application_config_descs usb_application_config_descs `[1]*.25DCCS724  1 e 2 0 ]
+"41 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"67
+} 0
+"487 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\usb.c
+[v _usb_init usb_init `(v  1 e 1 0 ]
+{
+[s S619 . 1 `uc 1 EPSTALL 1 0 :1:0 
+`uc 1 EPINEN 1 0 :1:1 
+`uc 1 EPOUTEN 1 0 :1:2 
+`uc 1 EPCONDIS 1 0 :1:3 
+`uc 1 EPHSHK 1 0 :1:4 
+]
+"586
+[u S625 . 1 `S619 1 . 1 0 ]
+[v usb_init@ep ep `*.39VES625  1 a 2 25 ]
+"489
+[v usb_init@i i `uc  1 a 1 27 ]
+"664
+} 0
+"467
+[v _reset_ep0_data_stage reset_ep0_data_stage `(v  1 s 1 reset_ep0_data_stage ]
+{
+"479
+} 0
+"449
+[v _pic16_linear_addr pic16_linear_addr `(ui  1 s 2 pic16_linear_addr ]
+{
+"451
+[v pic16_linear_addr@addr addr `ui  1 a 2 20 ]
+[v pic16_linear_addr@low low `uc  1 a 1 19 ]
+[v pic16_linear_addr@high high `uc  1 a 1 18 ]
+"449
+[v pic16_linear_addr@ptr ptr `*.39v  1 p 2 6 ]
+"464
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\memset.c
+[v _memset memset `(*.39v  1 e 1 0 ]
+{
+"15
+[v memset@p p `*.39uc  1 a 2 6 ]
+"8
+[v memset@p1 p1 `*.39v  1 p 2 0 ]
+[v memset@c c `i  1 p 2 2 ]
+[v memset@n n `ui  1 p 2 4 ]
+"22
+} 0
+"116 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\main.c
+[v _timer_init timer_init `(v  1 e 1 0 ]
+{
+"128
+} 0
+"94
+[v _thermometer_init thermometer_init `(v  1 e 1 0 ]
+{
+"106
+} 0
+"464 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\doprnt.c
+[v _printf printf `(i  1 e 2 0 ]
+{
+"528
+[v printf@val val `ui  1 a 2 29 ]
+"499
+[v printf@c c `c  1 a 1 31 ]
+"506
+[v printf@prec prec `c  1 a 1 28 ]
+"508
+[v printf@flag flag `uc  1 a 1 27 ]
+"466
+[v printf@ap ap `[1]*.4v  1 a 1 26 ]
+"464
+[v printf@f f `*.25DCCuc  1 p 2 18 ]
+"1541
+} 0
+"71 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\main.c
+[v _putch putch `(v  1 e 1 0 ]
+{
+[v putch@data data `uc  1 a 1 wreg ]
+"73
+[v putch@printBuf printBuf `*.39uc  1 a 2 15 ]
+"71
+[v putch@data data `uc  1 a 1 wreg ]
+"72
+[v putch@index index `i  1 s 2 index ]
+[v putch@data data `uc  1 a 1 17 ]
+"92
+} 0
+"1444 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\usb.c
+[v _usb_send_in_buffer usb_send_in_buffer `(v  1 e 1 0 ]
+{
+[v usb_send_in_buffer@endpoint endpoint `uc  1 a 1 wreg ]
+[s S476 . 1 `uc 1 BC8 1 0 :1:0 
+`uc 1 BC9 1 0 :1:1 
+`uc 1 PID 1 0 :4:2 
+`uc 1 reserved 1 0 :1:6 
+`uc 1 UOWN 1 0 :1:7 
+]
+"1452
+[s S482 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 BSTALL 1 0 :1:2 
+`uc 1 DTSEN 1 0 :1:3 
+`uc 1 INCDIS 1 0 :1:4 
+`uc 1 KEN 1 0 :1:5 
+`uc 1 DTS 1 0 :1:6 
+`uc 1 . 1 0 :1:7 
+]
+[u S491 . 1 `S476 1 . 1 0 `S482 1 . 1 0 `uc 1 BDnSTAT 1 0 ]
+[s S495 buffer_descriptor 4 `S491 1 STAT 1 0 `uc 1 BDnCNT 1 1 `ui 1 BDnADR 2 2 ]
+[v usb_send_in_buffer@bd bd `*.4S495  1 a 1 12 ]
+"1451
+[v usb_send_in_buffer@pid pid `uc  1 a 1 10 ]
+"1444
+[v usb_send_in_buffer@endpoint endpoint `uc  1 a 1 wreg ]
+[v usb_send_in_buffer@len len `ui  1 p 2 6 ]
+"1450
+[v usb_send_in_buffer@endpoint endpoint `uc  1 a 1 11 ]
+"1484
+} 0
+"1496
+[v _usb_in_endpoint_halted usb_in_endpoint_halted `(uc  1 e 1 0 ]
+{
+[v usb_in_endpoint_halted@endpoint endpoint `uc  1 a 1 wreg ]
+[v usb_in_endpoint_halted@endpoint endpoint `uc  1 a 1 wreg ]
+"1498
+[v usb_in_endpoint_halted@endpoint endpoint `uc  1 a 1 5 ]
+"1499
+} 0
+"1486
+[v _usb_in_endpoint_busy usb_in_endpoint_busy `(uc  1 e 1 0 ]
+{
+[v usb_in_endpoint_busy@endpoint endpoint `uc  1 a 1 wreg ]
+[v usb_in_endpoint_busy@endpoint endpoint `uc  1 a 1 wreg ]
+"1492
+[v usb_in_endpoint_busy@endpoint endpoint `uc  1 a 1 1 ]
+"1494
+} 0
+"1432
+[v _usb_get_in_buffer usb_get_in_buffer `(*.39uc  1 e 1 0 ]
+{
+[v usb_get_in_buffer@endpoint endpoint `uc  1 a 1 wreg ]
+[v usb_get_in_buffer@endpoint endpoint `uc  1 a 1 wreg ]
+"1440
+[v usb_get_in_buffer@endpoint endpoint `uc  1 a 1 7 ]
+"1442
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+{
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v ___bmul@product product `uc  1 a 1 2 ]
+"4
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 0 ]
+"6
+[v ___bmul@multiplier multiplier `uc  1 a 1 3 ]
+"51
+} 0
+"1427 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\usb.c
+[v _usb_get_configuration usb_get_configuration `(uc  1 e 1 0 ]
+{
+"1430
+} 0
+"6 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwmod@counter counter `uc  1 a 1 13 ]
+"6
+[v ___lwmod@divisor divisor `ui  1 p 2 8 ]
+[v ___lwmod@dividend dividend `ui  1 p 2 10 ]
+"26
+} 0
+"6 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwdiv@quotient quotient `ui  1 a 2 5 ]
+"12
+[v ___lwdiv@counter counter `uc  1 a 1 7 ]
+"6
+[v ___lwdiv@divisor divisor `ui  1 p 2 0 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
+"31
+} 0
+"108 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\main.c
+[v _oscillator_init oscillator_init `(v  1 e 1 0 ]
+{
+"114
+} 0
+"130
+[v _gpio_init gpio_init `(v  1 e 1 0 ]
+{
+"145
+} 0
+"6 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\llmod.c
+[v ___llmod __llmod `(ul  1 e 4 0 ]
+{
+"11
+[v ___llmod@counter counter `uc  1 a 1 9 ]
+"6
+[v ___llmod@divisor divisor `ul  1 p 4 0 ]
+[v ___llmod@dividend dividend `ul  1 p 4 4 ]
+"26
+} 0
+"29 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\main.c
+[v _isr isr `II(v  1 e 1 0 ]
+{
+"37
+} 0
+"1314 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\usb.c
+[v _usb_service usb_service `(v  1 e 1 0 ]
+{
+[s S619 . 1 `uc 1 EPSTALL 1 0 :1:0 
+`uc 1 EPINEN 1 0 :1:1 
+`uc 1 EPOUTEN 1 0 :1:2 
+`uc 1 EPCONDIS 1 0 :1:3 
+`uc 1 EPHSHK 1 0 :1:4 
+]
+"1334
+[u S625 . 1 `S619 1 . 1 0 ]
+[v usb_service@ep ep `*.39VES625  1 a 2 47 ]
+"1353
+[v usb_service@pid pid `uc  1 a 1 51 ]
+"1332
+[v usb_service@i i `i  1 a 2 49 ]
+"1425
+} 0
+"487
+[v i1_usb_init usb_init `(v  1 e 1 0 ]
+{
+[s S619 . 1 `uc 1 EPSTALL 1 0 :1:0 
+`uc 1 EPINEN 1 0 :1:1 
+`uc 1 EPOUTEN 1 0 :1:2 
+`uc 1 EPCONDIS 1 0 :1:3 
+`uc 1 EPHSHK 1 0 :1:4 
+]
+[u S625 . 1 `S619 1 . 1 0 ]
+[v i1usb_init@ep usb_init `*.39VES625  1 a 2 13 ]
+[v i1usb_init@i usb_init `uc  1 a 1 15 ]
+"664
+} 0
+"449
+[v i1_pic16_linear_addr pic16_linear_addr `(ui  1 s 2 i1_pic16_linear_addr ]
+{
+[v i1pic16_linear_addr@addr pic16_linear_addr `ui  1 a 2 10 ]
+[v i1pic16_linear_addr@low pic16_linear_addr `uc  1 a 1 9 ]
+[v i1pic16_linear_addr@high pic16_linear_addr `uc  1 a 1 8 ]
+[v i1pic16_linear_addr@ptr ptr `*.39v  1 p 2 6 ]
+"464
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul16.c
+[v i1___wmul __wmul `(ui  1 e 2 0 ]
+{
+[v i1___wmul@product __wmul `ui  1 a 2 4 ]
+[v i1___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v i1___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\memset.c
+[v i1_memset memset `(*.39v  1 e 1 0 ]
+{
+[v i1memset@p memset `*.39uc  1 a 2 6 ]
+[v i1memset@p1 p1 `*.39v  1 p 2 0 ]
+[v i1memset@c c `i  1 p 2 2 ]
+[v i1memset@n n `ui  1 p 2 4 ]
+"22
+} 0
+"666 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\usb.c
+[v _reset_bd0_out reset_bd0_out `(v  1 s 1 reset_bd0_out ]
+{
+"676
+} 0
+"1117
+[v _handle_ep0_setup handle_ep0_setup `T(v  1 s 1 handle_ep0_setup ]
+{
+[s S657 . 1 `uc 1 destination 1 0 :5:0 
+`uc 1 type 1 0 :2:5 
+`uc 1 direction 1 0 :1:7 
+]
+"1119
+[u S661 . 1 `S657 1 . 1 0 `uc 1 bmRequestType 1 0 ]
+[s S664 setup_packet 8 `S661 1 REQUEST 1 0 `uc 1 bRequest 1 1 `ui 1 wValue 2 2 `ui 1 wIndex 2 4 `ui 1 wLength 2 6 ]
+[v handle_ep0_setup@setup setup `*.39S664  1 a 2 41 ]
+"1130
+[v handle_ep0_setup@res res `c  1 a 1 40 ]
+"1205
+} 0
+"825
+[v _handle_standard_control_request handle_standard_control_request `T(c  1 s 1 handle_standard_control_request ]
+{
+"1042
+[v handle_standard_control_request@ep_num_989 ep_num `uc  1 a 1 37 ]
+"1043
+[v handle_standard_control_request@ep_dir ep_dir `uc  1 a 1 32 ]
+"970
+[v handle_standard_control_request@ret_985 ret `[2]uc  1 a 2 18 ]
+"969
+[v handle_standard_control_request@flags flags `uc  1 a 1 31 ]
+"883
+[v handle_standard_control_request@desc_975 desc `*.25DCCv  1 a 2 35 ]
+"884
+[v handle_standard_control_request@len len `i  1 a 2 28 ]
+"967
+[v handle_standard_control_request@ep_num ep_num `uc  1 a 1 30 ]
+"957
+[v handle_standard_control_request@ret ret `ui  1 a 2 16 ]
+[s S724 configuration_descriptor 9 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `ui 1 wTotalLength 2 2 `uc 1 bNumInterfaces 1 4 `uc 1 bConfigurationValue 1 5 `uc 1 iConfiguration 1 6 `uc 1 bmAttributes 1 7 `uc 1 bMaxPower 1 8 ]
+"851
+[v handle_standard_control_request@desc desc `*.25DCCS724  1 a 2 26 ]
+"1034
+[v handle_standard_control_request@stall stall `uc  1 a 1 25 ]
+"1009
+[v handle_standard_control_request@ret_987 ret `c  1 a 1 23 ]
+"931
+[v handle_standard_control_request@req req `uc  1 a 1 22 ]
+"842
+[v handle_standard_control_request@descriptor_index descriptor_index `uc  1 a 1 34 ]
+"841
+[v handle_standard_control_request@descriptor descriptor `uc  1 a 1 33 ]
+[s S657 . 1 `uc 1 destination 1 0 :5:0 
+`uc 1 type 1 0 :2:5 
+`uc 1 direction 1 0 :1:7 
+]
+"827
+[u S661 . 1 `S657 1 . 1 0 `uc 1 bmRequestType 1 0 ]
+[s S664 setup_packet 8 `S661 1 REQUEST 1 0 `uc 1 bRequest 1 1 `ui 1 wValue 2 2 `ui 1 wIndex 2 4 `ui 1 wLength 2 6 ]
+[v handle_standard_control_request@setup setup `*.39S664  1 a 2 38 ]
+"828
+[v handle_standard_control_request@res res `c  1 a 1 24 ]
+"1115
+} 0
+"283 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\usb_descriptors.c
+[v _usb_application_get_string usb_application_get_string `(i  1 e 2 0 ]
+{
+[v usb_application_get_string@string_number string_number `uc  1 a 1 wreg ]
+[v usb_application_get_string@string_number string_number `uc  1 a 1 wreg ]
+[v usb_application_get_string@ptr ptr `*.4*.25DCCv  1 p 1 0 ]
+"285
+[v usb_application_get_string@string_number string_number `uc  1 a 1 3 ]
+"319
+} 0
+"811 C:\Users\212007025\Desktop\Microchip\projects\USB-temp.X\usb.c
+[v _start_control_return start_control_return `(v  1 s 1 start_control_return ]
+{
+"813
+[v start_control_return@bytes_to_send bytes_to_send `uc  1 a 1 12 ]
+"811
+[v start_control_return@ptr ptr `*.26DCCv  1 p 2 0 ]
+[v start_control_return@len len `ui  1 p 2 2 ]
+[v start_control_return@bytes_asked_for bytes_asked_for `ui  1 p 2 4 ]
+"823
+} 0
+"716
+[v _stall_ep_out stall_ep_out `(v  1 s 1 stall_ep_out ]
+{
+[v stall_ep_out@ep ep `uc  1 a 1 wreg ]
+[v stall_ep_out@ep ep `uc  1 a 1 wreg ]
+[v stall_ep_out@ep ep `uc  1 a 1 2 ]
+"725
+} 0
+"705
+[v _stall_ep_in stall_ep_in `(v  1 s 1 stall_ep_in ]
+{
+[v stall_ep_in@ep ep `uc  1 a 1 wreg ]
+[v stall_ep_in@ep ep `uc  1 a 1 wreg ]
+[v stall_ep_in@ep ep `uc  1 a 1 7 ]
+"714
+} 0
+"691
+[v _clear_ep0_stall clear_ep0_stall `(v  1 s 1 clear_ep0_stall ]
+{
+"702
+} 0
+"1207
+[v _handle_ep0_out handle_ep0_out `T(v  1 s 1 handle_ep0_out ]
+{
+"1233
+[v handle_ep0_out@bytes_to_copy bytes_to_copy `uc  1 a 1 6 ]
+"1212
+[v handle_ep0_out@pkt_len pkt_len `uc  1 a 1 5 ]
+"1267
+} 0
+"678
+[v _stall_ep0 stall_ep0 `(v  1 s 1 stall_ep0 ]
+{
+"688
+} 0
+"727
+[v _send_zero_length_packet_ep0 send_zero_length_packet_ep0 `(v  1 s 1 send_zero_length_packet_ep0 ]
+{
+"738
+} 0
+"1269
+[v _handle_ep0_in handle_ep0_in `T(v  1 s 1 handle_ep0_in ]
+{
+"1278
+[v handle_ep0_in@bytes_to_send bytes_to_send `uc  1 a 1 2 ]
+"1310
+} 0
+"467
+[v i1_reset_ep0_data_stage reset_ep0_data_stage `(v  1 s 1 i1_reset_ep0_data_stage ]
+{
+"479
+} 0
+"740
+[v _usb_send_in_buffer_0 usb_send_in_buffer_0 `(v  1 s 1 usb_send_in_buffer_0 ]
+{
+"760
+[v usb_send_in_buffer_0@pid pid `uc  1 a 1 9 ]
+"740
+[v usb_send_in_buffer_0@len len `ui  1 p 2 6 ]
+"774
+} 0
+"1496
+[v i1_usb_in_endpoint_halted usb_in_endpoint_halted `(uc  1 e 1 0 ]
+{
+[v i1usb_in_endpoint_halted@endpoint endpoint `uc  1 a 1 wreg ]
+[v i1usb_in_endpoint_halted@endpoint endpoint `uc  1 a 1 wreg ]
+"1498
+[v i1usb_in_endpoint_halted@endpoint endpoint `uc  1 a 1 5 ]
+"1499
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
+[v i1___bmul __bmul `(uc  1 e 1 0 ]
+{
+[v i1___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v i1___bmul@product __bmul `uc  1 a 1 3 ]
+[v i1___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v i1___bmul@multiplicand multiplicand `uc  1 p 1 0 ]
+"6
+[v i1___bmul@multiplier multiplier `uc  1 a 1 2 ]
+"51
+} 0
