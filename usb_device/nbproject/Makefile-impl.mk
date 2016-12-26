@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=USB-temp.X
+PROJECTNAME=usb_device
 
 # Active Configuration
 DEFAULTCONF=default
