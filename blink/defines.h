@@ -1,23 +1,19 @@
 /* 
  * File:   defines.h
- * Author: Mike Mogenson
+ * Author: andrew
  *
- * Created on December 24, 2014, 9:02 PM
+ * Created on December 25, 2016, 7:55 PM
  */
 
 #ifndef DEFINES_H
 #define	DEFINES_H
 
+
 // INCLUDES --------------------------------------------------------------------
 
 #include <xc.h>
-#include <stdint.h>
-//#include <stdio.h>
-//#include <string.h>
-//#include "usb.h"
-//#include "usb_config.h"
-//#include "usb_ch9.h"
-//#include "usb_cdc.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 // CONFIGURATION BITS ----------------------------------------------------------
 
@@ -56,22 +52,9 @@
 #define true        1
 #define false       0
 
-// LED defines for PICkit 2 Low Pin Count Demo Board
-#define DS1_TRIS    TRISCbits.TRISC0
-#define DS1_LAT     LATCbits.LATC0
-#define DS1         PORTCbits.RC0
-
-#define DS2_TRIS    TRISCbits.TRISC1
-#define DS2_LAT     LATCbits.LATC1
-#define DS2         PORTCbits.RC1
-
-#define DS3_TRIS    TRISCbits.TRISC2
-#define DS3_LAT     LATCbits.LATC2
-#define DS3         PORTCbits.RC2
-
-#define DS4_TRIS    TRISCbits.TRISC3
-#define DS4_LAT     LATCbits.LATC3
-#define DS4         PORTCbits.RC3
+// GPIO
+#define RC2_TRIS    TRISCbits.TRISC2
+#define RC2_LAT     LATCbits.LATC2
+#define RC2         PORTCbits.RC2
 
 #endif	/* DEFINES_H */
-

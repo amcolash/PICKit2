@@ -33,7 +33,7 @@ void interrupt isr() {
         return;
     }
 
-    usb_service(); // service usb
+//    usb_service(); // service usb
 }
 
 // MAIN FUNCTION ---------------------------------------------------------------
@@ -43,7 +43,7 @@ void main() {
     gpio_init();
     thermometer_init();
     timer_init();
-    usb_init();
+    //usb_init();
 
 
     while (1) {
@@ -53,7 +53,7 @@ void main() {
             DS4_LAT ^= 1;     // toggle LED 4
             DS3_LAT ^= 1;     // toggle LED 3
             //printf("Temperature = %d (ADC counts)\r", tempADC);
-            printf("%d\r", tempADC);    // print just the ADC count
+            //printf("%d\r", tempADC);    // print just the ADC count
         }
         
         // temperature measurement
@@ -67,29 +67,29 @@ void main() {
 }
 
 // FUNCTION IMPLEMENTATIONS ----------------------------------------------------
-
-void putch(char data) {
-    static int index = 0;
-    char *printBuf = usb_get_in_buffer(2);
-
-    printBuf[index] = data;
-    index++;
-
-    if (data == '\r' || data == '\n' || index == EP_2_LEN) { // end of line or full buffer
-        // send data
-        if (usb_is_configured() && !usb_in_endpoint_halted(2)) {
-            while (usb_in_endpoint_busy(2));
-            usb_send_in_buffer(2, index);
-
-            if (index == EP_2_LEN) {
-                while (usb_in_endpoint_busy(2));
-                usb_send_in_buffer(2, 0); // send zero-length packet
-            }
- 
-        }
-        index = 0;
-    }
-}
+//
+//void putch(char data) {
+//    static int index = 0;
+//    char *printBuf = usb_get_in_buffer(2);
+//
+//    printBuf[index] = data;
+//    index++;
+//
+//    if (data == '\r' || data == '\n' || index == EP_2_LEN) { // end of line or full buffer
+//        // send data
+//        if (usb_is_configured() && !usb_in_endpoint_halted(2)) {
+//            while (usb_in_endpoint_busy(2));
+//            usb_send_in_buffer(2, index);
+//
+//            if (index == EP_2_LEN) {
+//                while (usb_in_endpoint_busy(2));
+//                usb_send_in_buffer(2, 0); // send zero-length packet
+//            }
+// 
+//        }
+//        index = 0;
+//    }
+//}
 
 void thermometer_init() {
     FVRCONbits.TSEN = 1; // enable thermometer

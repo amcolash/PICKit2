@@ -31,3 +31,6 @@
 # Debug files
 *.dSYM/
 *.su
+/blink/nbproject/private/
+/blink/build/default/
+/blink/dist/default/
