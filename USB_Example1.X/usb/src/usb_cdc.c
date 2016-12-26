@@ -24,11 +24,11 @@
  *  with this software.  If not, see <http://www.apache.org/licenses/>.
  */
 
-#include "usb_config.h"
+#include <usb_config.h>
 
-#include "usb_ch9.h"
-#include "usb.h"
-#include "usb_cdc.h"
+#include <usb_ch9.h>
+#include <usb.h>
+#include <usb_cdc.h>
 
 #define MIN(x,y) (((x)<(y))?(x):(y))
 
@@ -81,37 +81,38 @@ static union transfer_data {
 
 #if defined(CDC_SET_COMM_FEATURE_CALLBACK) || defined(CDC_CLEAR_COMM_FEATURE_CALLBACK)
 static uint8_t set_or_clear_request;
-static void set_or_clear_comm_feature_callback(bool transfer_ok, void *context)
+static int8_t set_or_clear_comm_feature_callback(bool transfer_ok, void *context)
 {
 	/* Only ABSTRACT_STATE is supported here. */
 
 	if (!transfer_ok)
-		return;
+		return -1;
 
 	bool idle_setting = (transfer_data.comm_feature & 1) != 0;
 	bool data_multiplexed_state = (transfer_data.comm_feature & 2) != 0;
 
 	if (set_or_clear_request == CDC_SET_COMM_FEATURE) {
-		CDC_SET_COMM_FEATURE_CALLBACK(transfer_interface,
-		                              idle_setting,
-		                              data_multiplexed_state);
+		return CDC_SET_COMM_FEATURE_CALLBACK(transfer_interface,
+		                                     idle_setting,
+		                                     data_multiplexed_state);
 	}
 	else {
 		/* request == CDC_CLEAR_COMM_FEATURE */
-		CDC_CLEAR_COMM_FEATURE_CALLBACK(transfer_interface,
-		                                idle_setting,
-		                                data_multiplexed_state);
+		return CDC_CLEAR_COMM_FEATURE_CALLBACK(transfer_interface,
+		                                       idle_setting,
+		                                       data_multiplexed_state);
 	}
+	return 0;
 }
 #endif
 
 #if defined(CDC_SET_LINE_CODING_CALLBACK)
-static void set_line_coding(bool transfer_ok, void *context) {
+static int8_t set_line_coding(bool transfer_ok, void *context) {
 	if (!transfer_ok)
-		return;
+		return -1;
 
-	CDC_SET_LINE_CODING_CALLBACK(transfer_interface,
-	                             &transfer_data.line_coding);
+	return CDC_SET_LINE_CODING_CALLBACK(transfer_interface,
+	                                    &transfer_data.line_coding);
 }
 #endif
 

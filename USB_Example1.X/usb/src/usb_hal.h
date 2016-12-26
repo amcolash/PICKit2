@@ -143,7 +143,7 @@ struct buffer_descriptor {
 #define BDN_LENGTH(REG) (REG.BDnCNT)
 #endif
 
-#if defined(_16F1459) || defined(_16F1454) || defined(_16F1455)
+#if defined(_16F1459) || defined(_16F1454) || defined (_16F1455)
 #define BD_ADDR 0x2000
 #define BUFFER_ADDR 0x2080
 #else
@@ -558,8 +558,8 @@ struct buffer_descriptor {
 
 #define BD_ADDR
 #define BUFFER_ADDR
-#define BD_ATTR_TAG __attribute__((aligned(512)))
-#define XC8_BUFFER_ADDR_TAG
+#define BD_ATTR_TAG __attribute__((aligned(512), coherent))
+#define XC8_BUFFER_ADDR_TAG __attribute__((coherent))
 
 #define PPB_NONE         0 /* Unused on PIC32 */
 #define PPB_EPO_OUT_ONLY 1 /* Unused on PIC32 */

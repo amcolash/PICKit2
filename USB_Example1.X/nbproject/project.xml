@@ -3,12 +3,12 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>USB-temp</name>
-            <creation-uuid>4a9d746d-cfe1-432d-bb99-cf2e448a2922</creation-uuid>
+            <name>USB_Example1</name>
+            <creation-uuid>1eed967e-ac83-4a18-8054-c60c82a7ca95</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>
-            <header-extensions/>
+            <header-extensions>h</header-extensions>
             <asminc-extensions/>
             <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects/>
