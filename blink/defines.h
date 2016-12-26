@@ -54,7 +54,6 @@
 
 // GPIO
 #define RC2_TRIS    TRISCbits.TRISC2
-#define RC2_LAT     LATCbits.LATC2
 #define RC2         PORTCbits.RC2
 
 #endif	/* DEFINES_H */
