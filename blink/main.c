@@ -1,6 +1,6 @@
 /* 
  * File:   main.c
- * Author: andrew
+ * Author: Andrew McOlash
  *
  * Created on December 25, 2016, 7:54 PM
  */
@@ -17,17 +17,23 @@ void main() {
     gpio_init();
     
     while (1) {
-        __delay_ms(1);
-        RC2 = true;
+        // a little bit of a de-bounce
+        __delay_ms(10);
         
-        __delay_ms(1);
-        RC2 = false;
+        // Toggle LEDs based on button input
+        RC2 = (RC4 == true);
+        RC3 = (RC4 == false);
     }
 }
 
 // FUNCTION IMPLEMENTATIONS ----------------------------------------------------
 
 void gpio_init() {
-    // RC2 is output
+    // RC_2 = LED1
+    // RC_3 = LED2
+    // RC_4 = Push Button
+    
     RC2_TRIS = OUTPUT;
+    RC3_TRIS = OUTPUT;
+    RC4_TRIS = INPUT;
 }
