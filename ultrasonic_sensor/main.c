@@ -34,8 +34,7 @@ void main() {
             time++;
             __delay_us(1);
         }
-        
-        // 1.118
+
         RC0 = (time * 1.111) > 30; // Hacked number because of clock speed I set (I think). Anyways, seems to be within 0.25cm at 60cm
         
 //        RC0 = (time * 1.7150) > 25; // LED on if more than 25cm away - actual distance was ~ 16cm
