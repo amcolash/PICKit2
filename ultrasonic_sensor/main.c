@@ -45,10 +45,10 @@ void main() {
 
         if (time * DIST_CONV <= RANGE) {
             RC0 =  true;
-            __delay_ms(RANGE_DELAY);
+            __delay_ms((long) RANGE_DELAY);
         } else {
             RC0 = false;
-            __delay_ms(DELAY);
+            __delay_ms((long) DELAY);
         }
     }
 }

@@ -59,10 +59,11 @@
  */
 #define DIST_CONV     1.111
 
+// Range in cm
 #define RANGE         60
 
-#define DELAY         60 * 1000
-#define RANGE_DELAY   1  * 1000
+#define DELAY         0.5 * 1000
+#define RANGE_DELAY   60  * 1000
 
 // GPIO
 #define RC0_TRIS      TRISCbits.TRISC0
