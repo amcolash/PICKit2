@@ -16,15 +16,23 @@ void gpio_init();
 void main() {
     gpio_init();
     
-    // Turn off LED at start
-    RC0 = false;
+    // Variable to keep track of time
+    int time = 0;
     
-    while (1) {        
+    // Turn off outputs at start
+    RC0 = false;
+    RC3 = false;
+    
+    __delay_ms(2000); // A little bit of a boot delay
+    
+    while (1) {
+        // Reset timer
+        time = 0;
+        
+        // Do a quick pulse on the trigger pin of the ultrasonic sensor
         RC3 = true;
         __delay_us(50);
         RC3 = false;
-        
-        int time = 0;
         
         while (RC4 == false) {
             __delay_us(1);
@@ -35,11 +43,13 @@ void main() {
             __delay_us(1);
         }
 
-        RC0 = (time * 1.111) > 30; // Hacked number because of clock speed I set (I think). Anyways, seems to be within 0.25cm at 60cm
-        
-//        RC0 = (time * 1.7150) > 25; // LED on if more than 25cm away - actual distance was ~ 16cm
-        
-        __delay_ms(2000);
+        if (time * DIST_CONV <= RANGE) {
+            RC0 =  true;
+            __delay_ms(RANGE_DELAY);
+        } else {
+            RC0 = false;
+            __delay_ms(DELAY);
+        }
     }
 }
 

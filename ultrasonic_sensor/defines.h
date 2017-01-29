@@ -44,22 +44,34 @@
 
 // DEFINES ---------------------------------------------------------------------
 
-#define _XTAL_FREQ  500000
+#define _XTAL_FREQ    500000
 
-#define OUTPUT      0
-#define INPUT       1
+#define OUTPUT        0
+#define INPUT         1
 
-#define true        1
-#define false       0
+#define true          1
+#define false         0
+
+/*
+ * Hacked distance conversion because of clock speed I set, etc.
+ * Seems to be within 0.25cm at 60cm which is plenty good for me.
+ * Real conversion ratio which is based on math and science: (duration / 29 / 2)
+ */
+#define DIST_CONV     1.111
+
+#define RANGE         60
+
+#define DELAY         60 * 1000
+#define RANGE_DELAY   1  * 1000
 
 // GPIO
-#define RC0_TRIS    TRISCbits.TRISC0
-#define RC0         LATCbits.LATC0
+#define RC0_TRIS      TRISCbits.TRISC0
+#define RC0           LATCbits.LATC0
 
-#define RC3_TRIS    TRISCbits.TRISC3
-#define RC3         LATCbits.LATC3
+#define RC3_TRIS      TRISCbits.TRISC3
+#define RC3           LATCbits.LATC3
 
-#define RC4_TRIS    TRISCbits.TRISC4
-#define RC4         PORTCbits.RC4
+#define RC4_TRIS      TRISCbits.TRISC4
+#define RC4           PORTCbits.RC4
 
 #endif	/* DEFINES_H */
