@@ -49,6 +49,7 @@
 #define OUTPUT        0
 #define INPUT         1
 
+typedef int bool;
 #define true          1
 #define false         0
 
@@ -74,5 +75,11 @@
 
 #define RC4_TRIS      TRISCbits.TRISC4
 #define RC4           PORTCbits.RC4
+
+#define RA4_TRIS      TRISAbits.TRISA4
+#define RA4           LATAbits.LATA4
+
+#define RA5_TRIS      TRISAbits.TRISA5
+#define RA5           PORTAbits.RA5
 
 #endif	/* DEFINES_H */
