@@ -15,22 +15,21 @@ void gpio_init();
 
 void main() {
     gpio_init();
-    
-    // Turn off outputs at start
-    RC0 = false;
-    RC3 = false;
-    RA4 = false;
+   
+    RA0 = false;
+    RA1 = false;
+    RA2 = false;
     
     __delay_ms(2000); // A little bit of a boot delay
     
     while (1) {
         // sensor1 must be triggered, but not sensor2
-//        if (check_sensor1() && !check_sensor2()) {
         if (should_trigger()) {
-            RC0 = true;
+//        if (check_sensor1() || check_sensor2()) {
+            RA0 = true;
             __delay_ms((long) RANGE_DELAY);
         } else {
-            RC0 = false;
+            RA0 = false;
             __delay_ms((long) DELAY);
         }
     }
@@ -39,26 +38,33 @@ void main() {
 // FUNCTION IMPLEMENTATIONS ----------------------------------------------------
 
 void gpio_init() {
-    // RC_0 = LED1
-    // RC_3 = Ultrasonic Sensor 1 - Trigger (Output)
-    // RC_4 = Ultrasonic Sensor 1 - Echo (Input)
-    // RA_3 = Ultrasonic Sensor 2 - Trigger (Output)
+    // Disable analog inputs, we want digital!
+    ANSELAbits.ANSA0 = false;
+    ANSELAbits.ANSA1 = false;
+    ANSELAbits.ANSA2 = false;
+    ANSELAbits.ANSA4 = false;
+
+    // RA_0 = Output
+    // RA_1 = Ultrasonic Sensor 1 - Trigger (Output)
+    // RA_2 = Ultrasonic Sensor 2 - Trigger (Output)
+    // RA_3 = Ultrasonic Sensor 1 - Echo (Input)
     // RA_4 = Ultrasonic Sensor 2 - Echo (Input)
     
-    RC0_TRIS = OUTPUT;
-    
-    RC3_TRIS = OUTPUT;
-    RC4_TRIS = INPUT;
-    
-    RA4_TRIS = OUTPUT;
+    RA0_TRIS = OUTPUT;
+    RA1_TRIS = OUTPUT;
+    RA2_TRIS = OUTPUT;
+    RA3_TRIS = INPUT;
+    RA4_TRIS = INPUT;
     RA5_TRIS = INPUT;
 }
 
 bool should_trigger() {
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 3; i++) {
         if (!check_sensor1() || check_sensor2()) {
             return false;
         }
+        
+        __delay_ms(250);
     }
     
     return true;
@@ -69,21 +75,19 @@ bool should_trigger() {
  * for the inputs / outputs, it is much easier.
  */ 
 bool check_sensor1() {
-    __delay_ms((long) PRE_DELAY);
-    
     // Variable to keep track of time
     int time = 0;
 
     // Do a quick pulse on the trigger pin of the ultrasonic sensor
-    RC3 = true;
+    RA1 = true;
     __delay_us(50);
-    RC3 = false;
+    RA1 = false;
 
-    while (RC4 == false) {
+    while (RA4 == false) {
         __delay_us(1);
     }
 
-    while (RC4 == true) {
+    while (RA4 == true) {
         time++;
         __delay_us(1);
     }
@@ -92,15 +96,13 @@ bool check_sensor1() {
 }
 
 bool check_sensor2() {
-    __delay_ms((long) PRE_DELAY);
-    
     // Variable to keep track of time
     int time = 0;
 
     // Do a quick pulse on the trigger pin of the ultrasonic sensor
-    RA4 = true;
+    RA2 = true;
     __delay_us(50);
-    RA4 = false;
+    RA2 = false;
 
     while (RA5 == false) {
         __delay_us(1);

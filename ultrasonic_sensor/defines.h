@@ -63,8 +63,9 @@ typedef int bool;
 // Range in cm
 #define RANGE         60
 
-#define DELAY         0.5 * 1000
-#define RANGE_DELAY   60  * 1000
+#define PRE_DELAY     0.25 * 1000
+#define DELAY         0.5  * 1000
+#define RANGE_DELAY   60   * 1000
 
 // GPIO
 #define RC0_TRIS      TRISCbits.TRISC0
