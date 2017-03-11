@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   main.c
  * Author: Andrew McOlash
  *
@@ -10,28 +10,39 @@
 // FUNCTION PROTOTYPES ---------------------------------------------------------
 
 void gpio_init();
+bool check_sensor1();
+bool check_sensor2();
 
 // MAIN FUNCTION ---------------------------------------------------------------
 
 void main() {
     gpio_init();
-   
+
     RA0 = false;
-    RA1 = false;
     RA2 = false;
-    
+    RA5 = false;
+
     __delay_ms(2000); // A little bit of a boot delay
-    
+
+    int time = 0;
+    bool sensor1 = false;
+    bool sensor2 = false;
+
     while (1) {
-        // sensor1 must be triggered, but not sensor2
-        if (should_trigger()) {
-//        if (check_sensor1() || check_sensor2()) {
-            RA0 = true;
-            __delay_ms((long) RANGE_DELAY);
+        sensor1 = check_sensor1();
+        sensor2 = check_sensor2();
+
+        if (sensor1 && !sensor2) {
+            time = TRIGGER_TIME * 2;
+        } else if (sensor2) {
+            time = 0;
         } else {
-            RA0 = false;
-            __delay_ms((long) DELAY);
+            time--;
+            if (time < 0) time = 0; // prevent underflow
         }
+
+        RA0 = time > 0;
+        __delay_ms(450);
     }
 }
 
@@ -46,34 +57,29 @@ void gpio_init() {
 
     // RA_0 = Output
     // RA_1 = Ultrasonic Sensor 1 - Trigger (Output)
-    // RA_2 = Ultrasonic Sensor 2 - Trigger (Output)
-    // RA_3 = Ultrasonic Sensor 1 - Echo (Input)
+    // RA_2 = Ultrasonic Sensor 1 - Echo (Input)
     // RA_4 = Ultrasonic Sensor 2 - Echo (Input)
-    
-    RA0_TRIS = OUTPUT;
-    RA1_TRIS = OUTPUT;
-    RA2_TRIS = OUTPUT;
-    RA3_TRIS = INPUT;
-    RA4_TRIS = INPUT;
-    RA5_TRIS = INPUT;
-}
+    // RA_5 = Ultrasonic Sensor 2 - Trigger (Output)
 
-bool should_trigger() {
-    for (int i = 0; i < 3; i++) {
-        if (!check_sensor1() || check_sensor2()) {
-            return false;
-        }
-        
-        __delay_ms(250);
-    }
-    
-    return true;
+    // Output
+    RA0_TRIS = OUTPUT;
+
+    // Sensor 1
+    RA1_TRIS = OUTPUT;
+    RA2_TRIS = INPUT;
+
+    // Unused
+//    RA3_TRIS = OUTPUT;
+
+    // Sensor 2
+    RA4_TRIS = INPUT;
+    RA5_TRIS = OUTPUT;
 }
 
 /*
  * Not the most space efficient duping code, but since we have different structs
  * for the inputs / outputs, it is much easier.
- */ 
+ */
 bool check_sensor1() {
     // Variable to keep track of time
     int time = 0;
@@ -82,6 +88,27 @@ bool check_sensor1() {
     RA1 = true;
     __delay_us(50);
     RA1 = false;
+
+    while (RA2 == false) {
+        __delay_us(1);
+    }
+
+    while (RA2 == true) {
+        time++;
+        __delay_us(1);
+    }
+
+    return (time * DIST_CONV <= SENSOR1_RANGE);
+}
+
+bool check_sensor2() {
+    // Variable to keep track of time
+    int time = 0;
+
+    // Do a quick pulse on the trigger pin of the ultrasonic sensor
+    RA5 = true;
+    __delay_us(50);
+    RA5 = false;
 
     while (RA4 == false) {
         __delay_us(1);
@@ -92,26 +119,5 @@ bool check_sensor1() {
         __delay_us(1);
     }
 
-    return (time * DIST_CONV <= RANGE);
-}
-
-bool check_sensor2() {
-    // Variable to keep track of time
-    int time = 0;
-
-    // Do a quick pulse on the trigger pin of the ultrasonic sensor
-    RA2 = true;
-    __delay_us(50);
-    RA2 = false;
-
-    while (RA5 == false) {
-        __delay_us(1);
-    }
-
-    while (RA5 == true) {
-        time++;
-        __delay_us(1);
-    }
-
-    return (time * DIST_CONV <= RANGE);
+    return (time * DIST_CONV <= SENSOR2_RANGE);
 }

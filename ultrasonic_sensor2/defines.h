@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   defines.h
  * Author: andrew
  *
@@ -79,11 +79,17 @@ typedef int bool;
 #define DIST_CONV     1.111
 
 // Range in cm
-#define RANGE         60
+#define SENSOR1_RANGE         120
+#define SENSOR2_RANGE         90
 
-#define DELAY         0.5  * 1000
-//#define RANGE_DELAY   60   * 1000
-#define RANGE_DELAY   0.5  * 1000
+// Approximate time (sec) after a trigger before turned off
+#define TRIGGER_TIME  40
+
+// RA_0 = Output
+// RA_1 = Ultrasonic Sensor 1 - Echo (Input)
+// RA_2 = Ultrasonic Sensor 1 - Trigger (Output)
+// RA_4 = Ultrasonic Sensor 2 - Echo (Input)
+// RA_5 = Ultrasonic Sensor 2 - Trigger (Output)
 
 // GPIO
 #define RA0_TRIS      TRISAbits.TRISA0
@@ -93,15 +99,15 @@ typedef int bool;
 #define RA1           LATAbits.LATA1
 
 #define RA2_TRIS      TRISAbits.TRISA2
-#define RA2           LATAbits.LATA2
+#define RA2           PORTAbits.RA2
 
-#define RA3_TRIS      TRISAbits.TRISA3
-#define RA3           PORTAbits.RA3
+//#define RA3_TRIS      TRISAbits.TRISA3
+//#define RA3           LATAbits.LATA3
 
 #define RA4_TRIS      TRISAbits.TRISA4
 #define RA4           PORTAbits.RA4
 
 #define RA5_TRIS      TRISAbits.TRISA5
-#define RA5           PORTAbits.RA5
+#define RA5           LATAbits.LATA5
 
 #endif	/* DEFINES_H */
