@@ -79,8 +79,8 @@ typedef int bool;
 #define DIST_CONV     1.111
 
 // Range in cm
-#define SENSOR1_RANGE         120
-#define SENSOR2_RANGE         90
+#define SENSOR1_RANGE         90
+#define SENSOR2_RANGE         120
 
 // Approximate time (sec) after a trigger before turned off
 #define TRIGGER_TIME  40
