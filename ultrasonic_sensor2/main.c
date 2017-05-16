@@ -21,13 +21,13 @@ void main() {
     RA0 = false;
     RA2 = false;
     RA5 = false;
-
+    
     __delay_ms(2000); // A little bit of a boot delay
 
     int time = 0;
     bool sensor1 = false;
     bool sensor2 = false;
-
+    
     while (1) {
         sensor1 = check_sensor1();
         sensor2 = check_sensor2();
@@ -40,7 +40,7 @@ void main() {
             time--;
             if (time < 0) time = 0; // prevent underflow
         }
-
+        
         RA0 = time > 0;
         __delay_ms(450);
     }

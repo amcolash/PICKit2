@@ -1,6 +1,6 @@
 /*
  * File:   defines.h
- * Author: andrew
+ * Author: Andrew McOlash
  *
  * Created on December 25, 2016, 7:55 PM
  */
@@ -43,8 +43,7 @@
 //#pragma config LVP = OFF        // Low-Voltage Programming Enable (High-voltage on MCLR/VPP must be used for programming)
 //
 //// DEFINES ---------------------------------------------------------------------
-//
-#define _XTAL_FREQ    500000
+
 
 #pragma config FOSC=INTOSC
 #pragma config PLLEN=OFF
@@ -61,8 +60,8 @@
 #pragma config BORV=LO
 #pragma config LVP=OFF
 
-// Definitions
-//#define _XTAL_FREQ  16000000        // this is used by the __delay_ms(xx) and __delay_us(xx) functions
+// this is used by the __delay_ms(xx) and __delay_us(xx) functions
+#define _XTAL_FREQ    16000000
 
 #define OUTPUT        0
 #define INPUT         1
@@ -71,43 +70,24 @@ typedef int bool;
 #define true          1
 #define false         0
 
-/*
- * Hacked distance conversion because of clock speed I set, etc.
- * Seems to be within 0.25cm at 60cm which is plenty good for me.
- * Real conversion ratio which is based on math and science: (duration / 29 / 2)
- */
-#define DIST_CONV     1.111
 
-// Range in cm
-#define SENSOR1_RANGE         90
-#define SENSOR2_RANGE         90
+// Delays for re-checking if the state has changed
+#define ON_CHECK      100
+#define OFF_CHECK     60000
 
-// Approximate time (sec) after a trigger before turned off
-#define TRIGGER_TIME  40
-
-// RA_0 = Output
-// RA_1 = Ultrasonic Sensor 1 - Echo (Input)
-// RA_2 = Ultrasonic Sensor 1 - Trigger (Output)
-// RA_4 = Ultrasonic Sensor 2 - Echo (Input)
-// RA_5 = Ultrasonic Sensor 2 - Trigger (Output)
+// RA_0 = ADC Input
+// RA_1 = Output
+// RA_2 = Ultrasonic Sensor 1 - Echo (Input)
+// RA_3 - RA_5 = Unused
 
 // GPIO
 #define RA0_TRIS      TRISAbits.TRISA0
-#define RA0           LATAbits.LATA0
+#define RA0           ADCON0bits.GO
 
 #define RA1_TRIS      TRISAbits.TRISA1
-#define RA1           LATAbits.LATA1
+#define RA1           PORTAbits.LATA1
 
 #define RA2_TRIS      TRISAbits.TRISA2
-#define RA2           PORTAbits.RA2
-
-//#define RA3_TRIS      TRISAbits.TRISA3
-//#define RA3           LATAbits.LATA3
-
-#define RA4_TRIS      TRISAbits.TRISA4
-#define RA4           PORTAbits.RA4
-
-#define RA5_TRIS      TRISAbits.TRISA5
-#define RA5           LATAbits.LATA5
+#define RA2           LATAbits.RA2
 
 #endif	/* DEFINES_H */
