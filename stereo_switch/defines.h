@@ -2,7 +2,7 @@
  * File:   defines.h
  * Author: Andrew McOlash
  *
- * Created on December 25, 2016, 7:55 PM
+ * Created on May 15, 2017, 8:36 PM
  */
 
 #ifndef DEFINES_H
@@ -63,6 +63,7 @@
 // this is used by the __delay_ms(xx) and __delay_us(xx) functions
 #define _XTAL_FREQ    16000000
 
+// Defines for input / output and booleans
 #define OUTPUT        0
 #define INPUT         1
 
@@ -70,24 +71,36 @@ typedef int bool;
 #define true          1
 #define false         0
 
+// Voltage threshold (from 0-1024) to trigger on state
+#define THRESHOLD     400
+
+// The value the counter needs to be at before triggering stereo on
+#define COUNTER_VALUE 8
 
 // Delays for re-checking if the state has changed
-#define ON_CHECK      100
-#define OFF_CHECK     60000
+// Delay in ms
+#define CHECK_DELAY   100
 
-// RA_0 = ADC Input
-// RA_1 = Output
-// RA_2 = Ultrasonic Sensor 1 - Echo (Input)
-// RA_3 - RA_5 = Unused
+// Time turned on after silence in sec
+#define TRIGGER_TIME  60
+
+// RA_0 = Final Output
+// RA_1 = Temp Output
+// RA_2 = ADC Input
+// RA_3 = Switch Output
+// RA_4 - RA_5 = Unused
 
 // GPIO
 #define RA0_TRIS      TRISAbits.TRISA0
-#define RA0           ADCON0bits.GO
+#define RA0           LATAbits.LATA0
 
 #define RA1_TRIS      TRISAbits.TRISA1
-#define RA1           PORTAbits.LATA1
+#define RA1           LATAbits.LATA1
 
 #define RA2_TRIS      TRISAbits.TRISA2
-#define RA2           LATAbits.RA2
+#define RA2           ADCON0bits.GO
+
+#define RA3_TRIS      TRISAbits.TRISA3
+#define RA3           PORTAbits.RA3
 
 #endif	/* DEFINES_H */

@@ -1,0 +1,143 @@
+[p LITE_MODE AUTOSTATIC PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 12F1822 ]
+[d frameptr 6 ]
+"62 /opt/microchip/xc8/v1.40/sources/common/float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 /opt/microchip/xc8/v1.40/sources/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"6 /opt/microchip/xc8/v1.40/sources/pic/eeprom.c
+[v _eecpymem eecpymem `(v  1 e 1 0 ]
+"39
+[v _memcpyee memcpyee `(v  1 e 1 0 ]
+"17 /home/andrew/Github/PICKit2/stereo_switch/main.c
+[v _main main `(v  1 e 1 0 ]
+"70
+[v _init init `(v  1 e 1 0 ]
+"115
+[v _read_adc read_adc `(ui  1 e 2 0 ]
+[s S196 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+]
+"1226 /opt/microchip/xc8/v1.40/include/pic12f1822.h
+[u S203 . 1 `S196 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES203  1 e 1 @140 ]
+[s S50 . 1 `uc 1 SCS0 1 0 :1:0 
+`uc 1 SCS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 IRCF0 1 0 :1:3 
+`uc 1 IRCF1 1 0 :1:4 
+`uc 1 IRCF2 1 0 :1:5 
+`uc 1 IRCF3 1 0 :1:6 
+`uc 1 SPLLEN 1 0 :1:7 
+]
+"1629
+[s S59 . 1 `uc 1 SCS 1 0 :2:0 
+`uc 1 . 1 0 :1:2 
+`uc 1 IRCF 1 0 :4:3 
+]
+[u S63 . 1 `S50 1 . 1 0 `S59 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES63  1 e 1 @153 ]
+"1745
+[v _ADRESL ADRESL `VEuc  1 e 1 @155 ]
+"1764
+[v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
+[s S126 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+`uc 1 CHS4 1 0 :1:6 
+]
+"1812
+[s S134 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 ADGO 1 0 :1:1 
+`uc 1 CHS 1 0 :5:2 
+]
+[s S138 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+]
+[s S141 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[u S144 . 1 `S126 1 . 1 0 `S134 1 . 1 0 `S138 1 . 1 0 `S141 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES144  1 e 1 @157 ]
+[s S168 . 1 `uc 1 ADPREF0 1 0 :1:0 
+`uc 1 ADPREF1 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS0 1 0 :1:4 
+`uc 1 ADCS1 1 0 :1:5 
+`uc 1 ADCS2 1 0 :1:6 
+`uc 1 ADFM 1 0 :1:7 
+]
+"1892
+[s S176 . 1 `uc 1 ADPREF 1 0 :2:0 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS 1 0 :3:4 
+]
+[u S180 . 1 `S168 1 . 1 0 `S176 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES180  1 e 1 @158 ]
+[s S23 . 1 `uc 1 LATA0 1 0 :1:0 
+`uc 1 LATA1 1 0 :1:1 
+`uc 1 LATA2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 LATA4 1 0 :1:4 
+`uc 1 LATA5 1 0 :1:5 
+]
+"1951
+[u S30 . 1 `S23 1 . 1 0 ]
+[v _LATAbits LATAbits `VES30  1 e 1 @268 ]
+[s S80 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 DACPSS0 1 0 :1:2 
+`uc 1 DACPSS1 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 DACOE 1 0 :1:5 
+`uc 1 DACLPS 1 0 :1:6 
+`uc 1 DACEN 1 0 :1:7 
+]
+"2229
+[s S88 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 DACPSS 1 0 :2:2 
+]
+[u S91 . 1 `S80 1 . 1 0 `S88 1 . 1 0 ]
+[v _DACCON0bits DACCON0bits `VES91  1 e 1 @280 ]
+[s S106 . 1 `uc 1 ANSA0 1 0 :1:0 
+`uc 1 ANSA1 1 0 :1:1 
+`uc 1 ANSA2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 ANSA4 1 0 :1:4 
+]
+"2593
+[s S112 . 1 `uc 1 ANSELA 1 0 :5:0 
+]
+[u S114 . 1 `S106 1 . 1 0 `S112 1 . 1 0 ]
+[v _ANSELAbits ANSELAbits `VES114  1 e 1 @396 ]
+"17 /home/andrew/Github/PICKit2/stereo_switch/main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"24
+[v main@value value `ui  1 a 2 4 ]
+"29
+[v main@counter counter `i  1 a 2 2 ]
+"27
+[v main@time time `i  1 a 2 0 ]
+"64
+} 0
+"115
+[v _read_adc read_adc `(ui  1 e 2 0 ]
+{
+"116
+[v read_adc@ADCValue ADCValue `ui  1 a 2 5 ]
+"132
+} 0
+"70
+[v _init init `(v  1 e 1 0 ]
+{
+"112
+} 0
