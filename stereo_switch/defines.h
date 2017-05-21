@@ -72,7 +72,7 @@ typedef int bool;
 #define false         0
 
 // Voltage threshold (from 0-1024) to trigger on state
-#define THRESHOLD     400
+#define THRESHOLD     450
 
 // The value the counter needs to be at before triggering stereo on
 #define COUNTER_VALUE 8
@@ -82,13 +82,13 @@ typedef int bool;
 #define CHECK_DELAY   100
 
 // Time turned on after silence in sec
-#define TRIGGER_TIME  60
+#define TRIGGER_TIME  15 //TODO, 60
 
 // RA_0 = Final Output
 // RA_1 = Temp Output
-// RA_2 = ADC Input
-// RA_3 = Switch Output
-// RA_4 - RA_5 = Unused
+// RA_2 = Audio Input
+// RA_4 = Switch Output
+// RA_3, RA_5 = Unused
 
 // GPIO
 #define RA0_TRIS      TRISAbits.TRISA0
@@ -98,9 +98,7 @@ typedef int bool;
 #define RA1           LATAbits.LATA1
 
 #define RA2_TRIS      TRISAbits.TRISA2
-#define RA2           ADCON0bits.GO
 
-#define RA3_TRIS      TRISAbits.TRISA3
-#define RA3           PORTAbits.RA3
+#define RA4_TRIS      TRISAbits.TRISA4
 
 #endif	/* DEFINES_H */

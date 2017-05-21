@@ -3038,7 +3038,7 @@ typedef int bool;
 
 # 12 "main.c"
 void init();
-unsigned int read_adc();
+unsigned int read_adc(unsigned int);
 
 
 
@@ -3049,7 +3049,8 @@ LATAbits.LATA0 = 0;
 LATAbits.LATA1 = 0;
 
 
-unsigned int value;
+unsigned int audio_value;
+unsigned int switch_value;
 
 
 int time = 0;
@@ -3057,17 +3058,44 @@ int time = 0;
 int counter = 0;
 
 while(1) {
-value = read_adc();
 
-LATAbits.LATA1 = 0;
-LATAbits.LATA1 = value > 400;
+audio_value = read_adc(0x02);
 
-# 62
+LATAbits.LATA1 = audio_value > 450;
+
+if (audio_value > 450) {
+counter += 2;
+
+if (counter > 8) {
+counter = 8;
+time = 15 * 10;
+}
+} else {
+time--;
+counter--;
+
+if (time < 0) time = 0;
+if (counter < 0) counter = 0;
+}
+
+
+switch_value = read_adc(0x03);
+
+if ((switch_value < 512 && time > 0) || (switch_value > 512 && time == 0)) {
+
+LATAbits.LATA0 = 1;
+_delay((unsigned long)((100)*(16000000/4000.0)));
+LATAbits.LATA0 = 0;
+
+
+_delay((unsigned long)((10000)*(16000000/4000.0)));
+}
+
 _delay((unsigned long)((100)*(16000000/4000.0)));
 }
 }
 
-# 70
+# 74
 void init() {
 
 
@@ -3086,10 +3114,8 @@ DACCON0bits.DACEN=0;
 ANSELAbits.ANSA0 = 0;
 ANSELAbits.ANSA1 = 0;
 ANSELAbits.ANSA2 = 1;
-ANSELAbits.ANSA4 = 0;
+ANSELAbits.ANSA4 = 1;
 
-
-ADCON0bits.CHS=0x02;
 
 ADCON0bits.ADON=1;
 
@@ -3097,18 +3123,22 @@ ADCON1bits.ADCS=0x01;
 
 ADCON1bits.ADFM=0x01;
 
-# 106
+# 108
 TRISAbits.TRISA0 = 0;
 TRISAbits.TRISA1 = 0;
 
 
 TRISAbits.TRISA2 = 1;
-TRISAbits.TRISA3 = 1;
+TRISAbits.TRISA4 = 1;
 }
 
 
-unsigned int read_adc() {
-unsigned int ADCValue;
+unsigned int read_adc(unsigned int channel) {
+
+ADCON0bits.CHS = channel;
+
+
+_delay((unsigned long)((50)*(16000000/4000000.0)));
 
 
 ADCON0bits.GO = 1;
@@ -3117,11 +3147,7 @@ ADCON0bits.GO = 1;
 while (ADCON0bits.GO);
 
 
-ADCValue = ADRESH << 8;
 
 
-ADCValue = ADCValue + ADRESL;
-
-
-return ADCValue;
+return (ADRESH << 8) + ADRESL;
 }

@@ -10,7 +10,7 @@
 // FUNCTION PROTOTYPES ---------------------------------------------------------
 
 void init();
-unsigned int read_adc();
+unsigned int read_adc(unsigned int);
 
 // MAIN FUNCTION ---------------------------------------------------------------
 
@@ -21,7 +21,8 @@ void main() {
     RA1 = false;
 
     // used to store ADC result after capture
-    unsigned int value;
+    unsigned int audio_value;
+    unsigned int switch_value;
 
     // int so that we can go negative, and then correct it
     int time = 0;
@@ -29,37 +30,40 @@ void main() {
     int counter = 0;
 
     while(true) {
-      value = read_adc();
+        // Read value of audio input
+        audio_value = read_adc(0x02);
 
-      RA1 = false;
-      RA1 = value > 400;
+        RA1 = audio_value > THRESHOLD;
 
-      /*
-      if (RA1) {
-        counter += 2;
+        if (audio_value > THRESHOLD) {
+            counter += 2;
 
-        if (counter > COUNTER_VALUE) {
-          counter = COUNTER_VALUE;
-          time = TRIGGER_TIME * 10; // times 10 because we check 10x per second
+            if (counter > COUNTER_VALUE) {
+                counter = COUNTER_VALUE;
+                time = TRIGGER_TIME * 10; // times 10 because we check 10x per second
+            }
+        } else {
+            time--;
+            counter--;
+
+            if (time < 0) time = 0; // prevent negative, stick to 0
+            if (counter < 0) counter = 0; // prevent negative, stick to 0
         }
-      } else {
-        time--;
-        counter--;
 
-        if (time < 0) time = 0; // prevent negative, stick to 0
-        if (counter < 0) counter = 0; // prevent negative, stick to 0
-      }
+        // Check if the stereo is on, then quick flip the switch
+        switch_value = read_adc(0x03);
+        
+        if ((switch_value < 512 && time > 0) || (switch_value > 512 && time == 0)) {
+            // Toggle the power switch
+            RA0 = true;
+            __delay_ms(100);
+            RA0 = false;
 
-      RA0 = time > 0;
-      */
-
-//      if (RA2) {
-//          __delay_ms(3000);
-//      } else {
-//          __delay_ms(100);
-//      }
-
-      __delay_ms(CHECK_DELAY);
+            // Wait for stereo to turn on/off
+            __delay_ms(10000);
+        }
+        
+        __delay_ms(CHECK_DELAY);
     }
 }
 
@@ -85,12 +89,10 @@ void init() {
     ANSELAbits.ANSA0 = false;
     ANSELAbits.ANSA1 = false;
     ANSELAbits.ANSA2 = true;
-    ANSELAbits.ANSA4 = false;
+    ANSELAbits.ANSA4 = true;
 
-    // This selects which analog input to use for the ADC conversion
-    ADCON0bits.CHS=0x02;	
-    // ADC is on
-    ADCON0bits.ADON=1;		
+    // Turn the ADC on
+    ADCON0bits.ADON=1;
   	// select ADC conversion clock select as Fosc/8
     ADCON1bits.ADCS=0x01;
     // results are right justified
@@ -98,9 +100,9 @@ void init() {
 
     // RA_0 = Final Output
     // RA_1 = Temp Output
-    // RA_2 = ADC Input
-    // RA_3 = Switch Output
-    // RA_4 - RA_5 = Unused
+    // RA_2 = Audio Input
+    // RA_4 = Switch Output
+    // RA_3, RA_5 = Unused
 
     // Outputs
     RA0_TRIS = OUTPUT;
@@ -108,25 +110,25 @@ void init() {
 
     // Inputs
     RA2_TRIS = INPUT;
-    RA3_TRIS = INPUT;
+    RA4_TRIS = INPUT;
 }
 
 // This subroutine does the ADC conversion and returns the 10 bit result
-unsigned int read_adc() {
-    unsigned int ADCValue;
-
+unsigned int read_adc(unsigned int channel) {
+    // This selects which analog input to use for the ADC conversion
+    ADCON0bits.CHS = channel;
+    
+    // Wait for channel switch
+    __delay_us(50);
+    
     // start conversion
     ADCON0bits.GO = 1;
 
     // wait for conversion to finish
     while (ADCON0bits.GO);
 
-    // get the 2 msbs of the result and rotate 8 bits to the left
-    ADCValue = ADRESH << 8;
-
-    // now add the low 8 bits of the resut into our return variable
-    ADCValue = ADCValue + ADRESL;
-
     // return the 10bit result in a single variable
-    return ADCValue;
+    // get the 2 msbs of the result and rotate 8 bits to the left
+    // then add the low 8 bits of the resut into our return variable
+    return (ADRESH << 8) + ADRESL;
 }
