@@ -10,8 +10,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S102 . . ]
 "1951
 [v _LATAbits `VS102 ~T0 @X0 0 e@268 ]
-"13 main.c
+"14 main.c
 [v _read_adc `(ui ~T0 @X0 0 ef1`ui ]
+"13
+[v _toggle_power `(v ~T0 @X0 0 ef ]
 [v F2176 `(v ~T0 @X0 1 tf1`ul ]
 "152 /opt/microchip/xc8/v1.40/include/pic.h
 [v __delay `JF2176 ~T0 @X0 0 e ]
@@ -2322,213 +2324,219 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x LVP=OFF ]
 [; ;defines.h: 70: typedef int bool;
 [; ;main.c: 12: void init();
-[; ;main.c: 13: unsigned int read_adc(unsigned int);
-"17 main.c
+[; ;main.c: 13: void toggle_power();
+[; ;main.c: 14: unsigned int read_adc(unsigned int);
+"18 main.c
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 17: void main() {
+[; ;main.c: 18: void main() {
 [e :U _main ]
 [f ]
-[; ;main.c: 18: init();
-"18
+[; ;main.c: 19: init();
+"19
 [e ( _init ..  ]
-[; ;main.c: 20: LATAbits.LATA0 = 0;
-"20
-[e = . . _LATAbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 21: LATAbits.LATA1 = 0;
+[; ;main.c: 21: LATAbits.LATA0 = 0;
 "21
+[e = . . _LATAbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 22: LATAbits.LATA1 = 0;
+"22
 [e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
-"24
-[v _audio_value `ui ~T0 @X0 1 a ]
 "25
+[v _audio_value `ui ~T0 @X0 1 a ]
+"26
 [v _switch_value `ui ~T0 @X0 1 a ]
-"28
+"29
 [v _time `i ~T0 @X0 1 a ]
-[; ;main.c: 24: unsigned int audio_value;
-[; ;main.c: 25: unsigned int switch_value;
-[; ;main.c: 28: int time = 0;
+[; ;main.c: 25: unsigned int audio_value;
+[; ;main.c: 26: unsigned int switch_value;
+[; ;main.c: 29: int time = 0;
 [e = _time -> 0 `i ]
-"30
+"31
 [v _counter `i ~T0 @X0 1 a ]
-[; ;main.c: 30: int counter = 0;
+[; ;main.c: 31: int counter = 0;
 [e = _counter -> 0 `i ]
-[; ;main.c: 32: while(1) {
-"32
+[; ;main.c: 33: while(1) {
+"33
 [e :U 276 ]
 {
-[; ;main.c: 34: audio_value = read_adc(0x02);
-"34
+[; ;main.c: 35: audio_value = read_adc(0x02);
+"35
 [e = _audio_value ( _read_adc (1 -> -> 2 `i `ui ]
-[; ;main.c: 36: LATAbits.LATA1 = audio_value > 450;
+[; ;main.c: 36: switch_value = read_adc(0x03);
 "36
-[e = . . _LATAbits 0 1 -> -> > _audio_value -> -> 450 `i `ui `i `uc ]
-[; ;main.c: 38: if (audio_value > 450) {
-"38
-[e $ ! > _audio_value -> -> 450 `i `ui 278  ]
-{
-[; ;main.c: 39: counter += 2;
+[e = _switch_value ( _read_adc (1 -> -> 3 `i `ui ]
+[; ;main.c: 39: LATAbits.LATA1 = audio_value > 450;
 "39
-[e =+ _counter -> 2 `i ]
-[; ;main.c: 41: if (counter > 8) {
-"41
-[e $ ! > _counter -> 8 `i 279  ]
-{
-[; ;main.c: 42: counter = 8;
+[e = . . _LATAbits 0 1 -> -> > _audio_value -> -> 450 `i `ui `i `uc ]
+[; ;main.c: 42: counter++;
 "42
-[e = _counter -> 8 `i ]
-[; ;main.c: 43: time = 15 * 10;
+[e ++ _counter -> 1 `i ]
+[; ;main.c: 43: if (counter > 15) counter = 15;
 "43
-[e = _time * -> 15 `i -> 10 `i ]
-"44
-}
-[e :U 279 ]
-"45
-}
-[; ;main.c: 44: }
-[; ;main.c: 45: } else {
-[e $U 280  ]
+[e $ ! > _counter -> 15 `i 278  ]
+[e = _counter -> 15 `i ]
 [e :U 278 ]
+[; ;main.c: 45: if (audio_value > 450) {
+"45
+[e $ ! > _audio_value -> -> 450 `i `ui 279  ]
 {
-[; ;main.c: 46: time--;
+[; ;main.c: 46: time = 5 * 10;
 "46
-[e -- _time -> 1 `i ]
-[; ;main.c: 47: counter--;
+[e = _time * -> 5 `i -> 10 `i ]
 "47
-[e -- _counter -> 1 `i ]
+}
+[; ;main.c: 47: } else {
+[e $U 280  ]
+[e :U 279 ]
+{
+[; ;main.c: 48: time--;
+"48
+[e -- _time -> 1 `i ]
 [; ;main.c: 49: if (time < 0) time = 0;
 "49
 [e $ ! < _time -> 0 `i 281  ]
 [e = _time -> 0 `i ]
 [e :U 281 ]
-[; ;main.c: 50: if (counter < 0) counter = 0;
 "50
-[e $ ! < _counter -> 0 `i 282  ]
-[e = _counter -> 0 `i ]
-[e :U 282 ]
-"51
 }
 [e :U 280 ]
-[; ;main.c: 51: }
-[; ;main.c: 54: switch_value = read_adc(0x03);
-"54
-[e = _switch_value ( _read_adc (1 -> -> 3 `i `ui ]
-[; ;main.c: 56: if ((switch_value < 512 && time > 0) || (switch_value > 512 && time == 0)) {
-"56
-[e $ ! || && < _switch_value -> -> 512 `i `ui > _time -> 0 `i && > _switch_value -> -> 512 `i `ui == _time -> 0 `i 283  ]
+[; ;main.c: 50: }
+[; ;main.c: 53: if (counter >= 15 && ((switch_value < 512 && time > 0) || (switch_value >= 512 && time <= 0))) {
+"53
+[e $ ! && >= _counter -> 15 `i || && < _switch_value -> -> 512 `i `ui > _time -> 0 `i && >= _switch_value -> -> 512 `i `ui <= _time -> 0 `i 282  ]
 {
-[; ;main.c: 58: LATAbits.LATA0 = 1;
+[; ;main.c: 54: LATAbits.LATA1 = 0;
+"54
+[e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 55: counter = 0;
+"55
+[e = _counter -> 0 `i ]
+[; ;main.c: 57: toggle_power();
+"57
+[e ( _toggle_power ..  ]
 "58
-[e = . . _LATAbits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 59: _delay((unsigned long)((100)*(16000000/4000.0)));
-"59
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-[; ;main.c: 60: LATAbits.LATA0 = 0;
-"60
-[e = . . _LATAbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 63: _delay((unsigned long)((10000)*(16000000/4000.0)));
-"63
-[e ( __delay (1 -> * -> -> 10000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"64
 }
-[e :U 283 ]
-[; ;main.c: 64: }
-[; ;main.c: 66: _delay((unsigned long)((100)*(16000000/4000.0)));
-"66
+[e :U 282 ]
+[; ;main.c: 58: }
+[; ;main.c: 60: _delay((unsigned long)((100)*(16000000/4000.0)));
+"60
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"67
+"61
 }
 [e :U 275 ]
-"32
+"33
 [e $U 276  ]
 [e :U 277 ]
-[; ;main.c: 67: }
-[; ;main.c: 68: }
-"68
+[; ;main.c: 61: }
+[; ;main.c: 62: }
+"62
 [e :UE 274 ]
 }
-"74
+"68
 [v _init `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 74: void init() {
+[; ;main.c: 68: void init() {
 [e :U _init ]
 [f ]
-[; ;main.c: 78: OSCCONbits.SPLLEN=0;
-"78
+[; ;main.c: 72: OSCCONbits.SPLLEN=0;
+"72
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
-[; ;main.c: 80: OSCCONbits.IRCF=0x0F;
-"80
+[; ;main.c: 74: OSCCONbits.IRCF=0x0F;
+"74
 [e = . . _OSCCONbits 1 2 -> -> 15 `i `uc ]
-[; ;main.c: 82: OSCCONbits.SCS=0x02;
-"82
+[; ;main.c: 76: OSCCONbits.SCS=0x02;
+"76
 [e = . . _OSCCONbits 1 0 -> -> 2 `i `uc ]
-[; ;main.c: 86: DACCON0bits.DACEN=0;
-"86
+[; ;main.c: 80: DACCON0bits.DACEN=0;
+"80
 [e = . . _DACCON0bits 0 6 -> -> 0 `i `uc ]
-[; ;main.c: 89: ANSELAbits.ANSA0 = 0;
-"89
+[; ;main.c: 83: ANSELAbits.ANSA0 = 0;
+"83
 [e = . . _ANSELAbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 90: ANSELAbits.ANSA1 = 0;
-"90
+[; ;main.c: 84: ANSELAbits.ANSA1 = 0;
+"84
 [e = . . _ANSELAbits 0 1 -> -> 0 `i `uc ]
-[; ;main.c: 91: ANSELAbits.ANSA2 = 1;
-"91
+[; ;main.c: 85: ANSELAbits.ANSA2 = 1;
+"85
 [e = . . _ANSELAbits 0 2 -> -> 1 `i `uc ]
-[; ;main.c: 92: ANSELAbits.ANSA4 = 1;
-"92
+[; ;main.c: 86: ANSELAbits.ANSA4 = 1;
+"86
 [e = . . _ANSELAbits 0 4 -> -> 1 `i `uc ]
-[; ;main.c: 95: ADCON0bits.ADON=1;
-"95
+[; ;main.c: 89: ADCON0bits.ADON=1;
+"89
 [e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 97: ADCON1bits.ADCS=0x01;
-"97
+[; ;main.c: 91: ADCON1bits.ADCS=0x01;
+"91
 [e = . . _ADCON1bits 1 2 -> -> 1 `i `uc ]
-[; ;main.c: 99: ADCON1bits.ADFM=0x01;
-"99
+[; ;main.c: 93: ADCON1bits.ADFM=0x01;
+"93
 [e = . . _ADCON1bits 0 6 -> -> 1 `i `uc ]
-[; ;main.c: 108: TRISAbits.TRISA0 = 0;
-"108
+[; ;main.c: 102: TRISAbits.TRISA0 = 0;
+"102
 [e = . . _TRISAbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 109: TRISAbits.TRISA1 = 0;
-"109
+[; ;main.c: 103: TRISAbits.TRISA1 = 0;
+"103
 [e = . . _TRISAbits 0 1 -> -> 0 `i `uc ]
-[; ;main.c: 112: TRISAbits.TRISA2 = 1;
-"112
+[; ;main.c: 106: TRISAbits.TRISA2 = 1;
+"106
 [e = . . _TRISAbits 0 2 -> -> 1 `i `uc ]
-[; ;main.c: 113: TRISAbits.TRISA4 = 1;
-"113
+[; ;main.c: 107: TRISAbits.TRISA4 = 1;
+"107
 [e = . . _TRISAbits 0 4 -> -> 1 `i `uc ]
-[; ;main.c: 114: }
+[; ;main.c: 108: }
+"108
+[e :UE 283 ]
+}
+"110
+[v _toggle_power `(v ~T0 @X0 1 ef ]
+{
+[; ;main.c: 110: void toggle_power() {
+[e :U _toggle_power ]
+[f ]
+[; ;main.c: 112: LATAbits.LATA0 = 1;
+"112
+[e = . . _LATAbits 0 0 -> -> 1 `i `uc ]
+[; ;main.c: 113: _delay((unsigned long)((100)*(16000000/4000.0)));
+"113
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 114: LATAbits.LATA0 = 0;
 "114
+[e = . . _LATAbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 117: _delay((unsigned long)((10000)*(16000000/4000.0)));
+"117
+[e ( __delay (1 -> * -> -> 10000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 118: }
+"118
 [e :UE 284 ]
 }
-"117
+"121
 [v _read_adc `(ui ~T0 @X0 1 ef1`ui ]
 {
-[; ;main.c: 117: unsigned int read_adc(unsigned int channel) {
+[; ;main.c: 121: unsigned int read_adc(unsigned int channel) {
 [e :U _read_adc ]
 [v _channel `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;main.c: 119: ADCON0bits.CHS = channel;
-"119
-[e = . . _ADCON0bits 1 2 -> _channel `uc ]
-[; ;main.c: 122: _delay((unsigned long)((50)*(16000000/4000000.0)));
-"122
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 125: ADCON0bits.GO = 1;
-"125
-[e = . . _ADCON0bits 2 1 -> -> 1 `i `uc ]
-[; ;main.c: 128: while (ADCON0bits.GO);
+[; ;main.c: 128: ADCON0bits.CHS = channel;
 "128
+[e = . . _ADCON0bits 1 2 -> _channel `uc ]
+[; ;main.c: 133: _delay((unsigned long)((1)*(16000000/4000.0)));
+"133
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 136: ADCON0bits.GO = 1;
+"136
+[e = . . _ADCON0bits 2 1 -> -> 1 `i `uc ]
+[; ;main.c: 139: while (ADCON0bits.GO);
+"139
 [e $U 286  ]
 [e :U 287 ]
 [e :U 286 ]
 [e $ != -> . . _ADCON0bits 2 1 `i -> -> -> 0 `i `Vuc `i 287  ]
 [e :U 288 ]
-[; ;main.c: 133: return (ADRESH << 8) + ADRESL;
-"133
+[; ;main.c: 144: return (ADRESH << 8) + ADRESL;
+"144
 [e ) -> + << -> _ADRESH `i -> 8 `i -> _ADRESL `i `ui ]
 [e $UE 285  ]
-[; ;main.c: 134: }
-"134
+[; ;main.c: 145: }
+"145
 [e :UE 285 ]
 }

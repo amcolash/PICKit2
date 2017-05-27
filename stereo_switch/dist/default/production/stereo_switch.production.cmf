@@ -11,16 +11,17 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$/tmp/xcXiI1E1X.obj
+$dist/default/production/stereo_switch.production.obj
+cinit CODE 0 7FE 7FE 2 2
+text1 CODE 0 753 753 1D 2
+text2 CODE 0 738 738 1B 2
+text3 CODE 0 71D 71D 1B 2
+maintext CODE 0 770 770 8E 2
+cstackCOMMON COMMON 1 70 70 D 1
+$/tmp/xcXrKlxwQ.obj
 reset_vec CODE 0 0 0 1 2
 end_init CODE 0 1 1 1 2
 config CONFIG 0 8007 8007 2 2
-$dist/default/production/stereo_switch.production.obj
-cinit CODE 0 7FE 7FE 2 2
-text1 CODE 0 731 731 17 2
-text2 CODE 0 748 748 1B 2
-maintext CODE 0 763 763 9B 2
-cstackCOMMON COMMON 1 70 70 D 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
@@ -31,8 +32,8 @@ RAM 20-6F 1
 RAM A0-BF 1
 BANK0 20-6F 1
 BANK1 A0-BF 1
-CONST 2-730 2
-ENTRY 2-730 2
+CONST 2-71C 2
+ENTRY 2-71C 2
 IDLOC 8000-8003 2
 SFR10 500-56F 1
 SFR11 580-5EF 1
@@ -57,7 +58,7 @@ SFR29 E80-EEF 1
 SFR30 F00-F6F 1
 SFR31 F80-FEF 1
 STACK 2000-206F 1
-CODE 2-730 2
+CODE 2-71C 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-16F 1
@@ -71,8 +72,8 @@ SFR9 480-4EF 1
 BIGRAM 2000-206F 1
 COMMON 7D-7D 1
 EEDATA F000-F0FF 2
-STRCODE 2-730 2
-STRING 2-730 2
+STRCODE 2-71C 2
+STRING 2-71C 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -87,62 +88,63 @@ STRING 2-730 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production/stereo_switch.production.obj
-7FE cinit CODE >317:/tmp/xcX85Zen5
-7FE cinit CODE >320:/tmp/xcX85Zen5
-7FE cinit CODE >326:/tmp/xcX85Zen5
-7FE cinit CODE >328:/tmp/xcX85Zen5
-7FF cinit CODE >329:/tmp/xcX85Zen5
-748 text2 CODE >74:/home/andrew/Github/PICKit2/stereo_switch/main.c
-748 text2 CODE >78:/home/andrew/Github/PICKit2/stereo_switch/main.c
-74A text2 CODE >80:/home/andrew/Github/PICKit2/stereo_switch/main.c
-74C text2 CODE >82:/home/andrew/Github/PICKit2/stereo_switch/main.c
-750 text2 CODE >86:/home/andrew/Github/PICKit2/stereo_switch/main.c
-752 text2 CODE >89:/home/andrew/Github/PICKit2/stereo_switch/main.c
-754 text2 CODE >90:/home/andrew/Github/PICKit2/stereo_switch/main.c
-755 text2 CODE >91:/home/andrew/Github/PICKit2/stereo_switch/main.c
-756 text2 CODE >92:/home/andrew/Github/PICKit2/stereo_switch/main.c
-757 text2 CODE >95:/home/andrew/Github/PICKit2/stereo_switch/main.c
-759 text2 CODE >97:/home/andrew/Github/PICKit2/stereo_switch/main.c
-75D text2 CODE >99:/home/andrew/Github/PICKit2/stereo_switch/main.c
-75E text2 CODE >108:/home/andrew/Github/PICKit2/stereo_switch/main.c
-75F text2 CODE >109:/home/andrew/Github/PICKit2/stereo_switch/main.c
-760 text2 CODE >112:/home/andrew/Github/PICKit2/stereo_switch/main.c
-761 text2 CODE >113:/home/andrew/Github/PICKit2/stereo_switch/main.c
-762 text2 CODE >114:/home/andrew/Github/PICKit2/stereo_switch/main.c
-731 text1 CODE >117:/home/andrew/Github/PICKit2/stereo_switch/main.c
-731 text1 CODE >119:/home/andrew/Github/PICKit2/stereo_switch/main.c
-73B text1 CODE >122:/home/andrew/Github/PICKit2/stereo_switch/main.c
-73F text1 CODE >125:/home/andrew/Github/PICKit2/stereo_switch/main.c
-741 text1 CODE >128:/home/andrew/Github/PICKit2/stereo_switch/main.c
-743 text1 CODE >133:/home/andrew/Github/PICKit2/stereo_switch/main.c
-763 maintext CODE >17:/home/andrew/Github/PICKit2/stereo_switch/main.c
-763 maintext CODE >18:/home/andrew/Github/PICKit2/stereo_switch/main.c
-764 maintext CODE >20:/home/andrew/Github/PICKit2/stereo_switch/main.c
-766 maintext CODE >21:/home/andrew/Github/PICKit2/stereo_switch/main.c
-767 maintext CODE >28:/home/andrew/Github/PICKit2/stereo_switch/main.c
-769 maintext CODE >30:/home/andrew/Github/PICKit2/stereo_switch/main.c
-76B maintext CODE >32:/home/andrew/Github/PICKit2/stereo_switch/main.c
-76B maintext CODE >34:/home/andrew/Github/PICKit2/stereo_switch/main.c
-774 maintext CODE >36:/home/andrew/Github/PICKit2/stereo_switch/main.c
-780 maintext CODE >38:/home/andrew/Github/PICKit2/stereo_switch/main.c
-787 maintext CODE >39:/home/andrew/Github/PICKit2/stereo_switch/main.c
-78B maintext CODE >41:/home/andrew/Github/PICKit2/stereo_switch/main.c
+7FE cinit CODE >318:/tmp/xcXtadm0r
+7FE cinit CODE >321:/tmp/xcXtadm0r
+7FE cinit CODE >327:/tmp/xcXtadm0r
+7FE cinit CODE >329:/tmp/xcXtadm0r
+7FF cinit CODE >330:/tmp/xcXtadm0r
+71D text3 CODE >68:/home/andrew/Github/PICKit2/stereo_switch/main.c
+71D text3 CODE >72:/home/andrew/Github/PICKit2/stereo_switch/main.c
+71F text3 CODE >74:/home/andrew/Github/PICKit2/stereo_switch/main.c
+721 text3 CODE >76:/home/andrew/Github/PICKit2/stereo_switch/main.c
+725 text3 CODE >80:/home/andrew/Github/PICKit2/stereo_switch/main.c
+727 text3 CODE >83:/home/andrew/Github/PICKit2/stereo_switch/main.c
+729 text3 CODE >84:/home/andrew/Github/PICKit2/stereo_switch/main.c
+72A text3 CODE >85:/home/andrew/Github/PICKit2/stereo_switch/main.c
+72B text3 CODE >86:/home/andrew/Github/PICKit2/stereo_switch/main.c
+72C text3 CODE >89:/home/andrew/Github/PICKit2/stereo_switch/main.c
+72E text3 CODE >91:/home/andrew/Github/PICKit2/stereo_switch/main.c
+732 text3 CODE >93:/home/andrew/Github/PICKit2/stereo_switch/main.c
+733 text3 CODE >102:/home/andrew/Github/PICKit2/stereo_switch/main.c
+734 text3 CODE >103:/home/andrew/Github/PICKit2/stereo_switch/main.c
+735 text3 CODE >106:/home/andrew/Github/PICKit2/stereo_switch/main.c
+736 text3 CODE >107:/home/andrew/Github/PICKit2/stereo_switch/main.c
+737 text3 CODE >108:/home/andrew/Github/PICKit2/stereo_switch/main.c
+738 text2 CODE >121:/home/andrew/Github/PICKit2/stereo_switch/main.c
+738 text2 CODE >128:/home/andrew/Github/PICKit2/stereo_switch/main.c
+742 text2 CODE >133:/home/andrew/Github/PICKit2/stereo_switch/main.c
+74A text2 CODE >136:/home/andrew/Github/PICKit2/stereo_switch/main.c
+74C text2 CODE >139:/home/andrew/Github/PICKit2/stereo_switch/main.c
+74E text2 CODE >144:/home/andrew/Github/PICKit2/stereo_switch/main.c
+753 text1 CODE >110:/home/andrew/Github/PICKit2/stereo_switch/main.c
+753 text1 CODE >112:/home/andrew/Github/PICKit2/stereo_switch/main.c
+755 text1 CODE >113:/home/andrew/Github/PICKit2/stereo_switch/main.c
+761 text1 CODE >114:/home/andrew/Github/PICKit2/stereo_switch/main.c
+763 text1 CODE >117:/home/andrew/Github/PICKit2/stereo_switch/main.c
+76F text1 CODE >118:/home/andrew/Github/PICKit2/stereo_switch/main.c
+770 maintext CODE >18:/home/andrew/Github/PICKit2/stereo_switch/main.c
+770 maintext CODE >19:/home/andrew/Github/PICKit2/stereo_switch/main.c
+771 maintext CODE >21:/home/andrew/Github/PICKit2/stereo_switch/main.c
+773 maintext CODE >22:/home/andrew/Github/PICKit2/stereo_switch/main.c
+774 maintext CODE >29:/home/andrew/Github/PICKit2/stereo_switch/main.c
+776 maintext CODE >31:/home/andrew/Github/PICKit2/stereo_switch/main.c
+778 maintext CODE >33:/home/andrew/Github/PICKit2/stereo_switch/main.c
+778 maintext CODE >35:/home/andrew/Github/PICKit2/stereo_switch/main.c
+781 maintext CODE >36:/home/andrew/Github/PICKit2/stereo_switch/main.c
+78A maintext CODE >39:/home/andrew/Github/PICKit2/stereo_switch/main.c
 796 maintext CODE >42:/home/andrew/Github/PICKit2/stereo_switch/main.c
 79A maintext CODE >43:/home/andrew/Github/PICKit2/stereo_switch/main.c
-79E maintext CODE >45:/home/andrew/Github/PICKit2/stereo_switch/main.c
-79F maintext CODE >46:/home/andrew/Github/PICKit2/stereo_switch/main.c
-7A3 maintext CODE >47:/home/andrew/Github/PICKit2/stereo_switch/main.c
-7A7 maintext CODE >49:/home/andrew/Github/PICKit2/stereo_switch/main.c
-7AB maintext CODE >50:/home/andrew/Github/PICKit2/stereo_switch/main.c
-7AF maintext CODE >54:/home/andrew/Github/PICKit2/stereo_switch/main.c
-7B8 maintext CODE >56:/home/andrew/Github/PICKit2/stereo_switch/main.c
-7D5 maintext CODE >58:/home/andrew/Github/PICKit2/stereo_switch/main.c
-7D7 maintext CODE >59:/home/andrew/Github/PICKit2/stereo_switch/main.c
-7E3 maintext CODE >60:/home/andrew/Github/PICKit2/stereo_switch/main.c
-7E5 maintext CODE >63:/home/andrew/Github/PICKit2/stereo_switch/main.c
-7F1 maintext CODE >64:/home/andrew/Github/PICKit2/stereo_switch/main.c
-7F1 maintext CODE >66:/home/andrew/Github/PICKit2/stereo_switch/main.c
-7FD maintext CODE >32:/home/andrew/Github/PICKit2/stereo_switch/main.c
+7A9 maintext CODE >45:/home/andrew/Github/PICKit2/stereo_switch/main.c
+7B0 maintext CODE >46:/home/andrew/Github/PICKit2/stereo_switch/main.c
+7B4 maintext CODE >47:/home/andrew/Github/PICKit2/stereo_switch/main.c
+7B5 maintext CODE >48:/home/andrew/Github/PICKit2/stereo_switch/main.c
+7B9 maintext CODE >49:/home/andrew/Github/PICKit2/stereo_switch/main.c
+7BD maintext CODE >53:/home/andrew/Github/PICKit2/stereo_switch/main.c
+7EC maintext CODE >54:/home/andrew/Github/PICKit2/stereo_switch/main.c
+7EE maintext CODE >55:/home/andrew/Github/PICKit2/stereo_switch/main.c
+7F0 maintext CODE >57:/home/andrew/Github/PICKit2/stereo_switch/main.c
+7F1 maintext CODE >60:/home/andrew/Github/PICKit2/stereo_switch/main.c
+7FD maintext CODE >33:/home/andrew/Github/PICKit2/stereo_switch/main.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -163,21 +165,21 @@ __Hspace_3 0 0 ABS 0 - -
 __CFG_IESO$OFF 0 0 ABS 0 - dist/default/production/stereo_switch.production.obj
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack /tmp/xcXiI1E1X.obj
-_init E90 0 CODE 0 text2 dist/default/production/stereo_switch.production.obj
-_main EC6 0 CODE 0 maintext dist/default/production/stereo_switch.production.obj
+___sp 0 0 STACK 2 stack /tmp/xcXrKlxwQ.obj
+_init E3A 0 CODE 0 text3 dist/default/production/stereo_switch.production.obj
+_main EE0 0 CODE 0 maintext dist/default/production/stereo_switch.production.obj
 btemp 7E 0 ABS 0 - dist/default/production/stereo_switch.production.obj
-start 2 0 CODE 0 init /tmp/xcXiI1E1X.obj
+start 2 0 CODE 0 init /tmp/xcXrKlxwQ.obj
 __CFG_BOREN$OFF 0 0 ABS 0 - dist/default/production/stereo_switch.production.obj
 __size_of_init 0 0 ABS 0 - dist/default/production/stereo_switch.production.obj
 __size_of_main 0 0 ABS 0 - dist/default/production/stereo_switch.production.obj
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 CODE 0 functab /tmp/xcXiI1E1X.obj
-intlevel1 0 0 CODE 0 functab /tmp/xcXiI1E1X.obj
-intlevel2 0 0 CODE 0 functab /tmp/xcXiI1E1X.obj
-intlevel3 0 0 CODE 0 functab /tmp/xcXiI1E1X.obj
-intlevel4 0 0 CODE 0 functab /tmp/xcXiI1E1X.obj
-intlevel5 0 0 CODE 0 functab /tmp/xcXiI1E1X.obj
+intlevel0 0 0 CODE 0 functab /tmp/xcXrKlxwQ.obj
+intlevel1 0 0 CODE 0 functab /tmp/xcXrKlxwQ.obj
+intlevel2 0 0 CODE 0 functab /tmp/xcXrKlxwQ.obj
+intlevel3 0 0 CODE 0 functab /tmp/xcXrKlxwQ.obj
+intlevel4 0 0 CODE 0 functab /tmp/xcXrKlxwQ.obj
+intlevel5 0 0 CODE 0 functab /tmp/xcXrKlxwQ.obj
 _OSCCONbits 99 0 ABS 0 - dist/default/production/stereo_switch.production.obj
 wtemp0 7E 0 ABS 0 - dist/default/production/stereo_switch.production.obj
 __Hfunctab 0 0 CODE 0 functab -
@@ -190,8 +192,9 @@ main@counter 79 0 COMMON 1 cstackCOMMON dist/default/production/stereo_switch.pr
 __CFG_FCMEN$OFF 0 0 ABS 0 - dist/default/production/stereo_switch.production.obj
 __CFG_MCLRE$OFF 0 0 ABS 0 - dist/default/production/stereo_switch.production.obj
 start_initialization FFC 0 CODE 0 cinit dist/default/production/stereo_switch.production.obj
+_toggle_power EA6 0 CODE 0 text1 dist/default/production/stereo_switch.production.obj
 _TRISAbits 8C 0 ABS 0 - dist/default/production/stereo_switch.production.obj
-___int_sp 0 0 STACK 2 stack /tmp/xcXiI1E1X.obj
+___int_sp 0 0 STACK 2 stack /tmp/xcXrKlxwQ.obj
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 BANK2 1 bank2 -
@@ -227,6 +230,7 @@ __Hsfr29 0 0 ABS 0 sfr29 -
 __Hsfr30 0 0 ABS 0 sfr30 -
 __Hsfr31 0 0 ABS 0 sfr31 -
 __Hstack 0 0 STACK 2 stack -
+__size_of_toggle_power 0 0 ABS 0 - dist/default/production/stereo_switch.production.obj
 __Hbank10 0 0 BANK10 1 bank10 -
 __Hbank11 0 0 BANK11 1 bank11 -
 __Hbank12 0 0 BANK12 1 bank12 -
@@ -317,6 +321,7 @@ __Lsfr7 0 0 ABS 0 sfr7 -
 __Lsfr8 0 0 ABS 0 sfr8 -
 __Lsfr9 0 0 ABS 0 sfr9 -
 __Ltext 0 0 ABS 0 text -
+__end_of_toggle_power EE0 0 CODE 0 text1 dist/default/production/stereo_switch.production.obj
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 __S0 8009 0 ABS 0 - -
 __S1 7D 0 ABS 0 - -
@@ -325,7 +330,7 @@ __S3 0 0 ABS 0 - -
 main@audio_value 75 0 COMMON 1 cstackCOMMON dist/default/production/stereo_switch.production.obj
 __size_of_read_adc 0 0 ABS 0 - dist/default/production/stereo_switch.production.obj
 __Lintentry 2 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec /tmp/xcXiI1E1X.obj
+reset_vec 0 0 CODE 0 reset_vec /tmp/xcXrKlxwQ.obj
 __Lbank10 0 0 BANK10 1 bank10 -
 __Lbank11 0 0 BANK11 1 bank11 -
 __Lbank12 0 0 BANK12 1 bank12 -
@@ -348,7 +353,7 @@ __Lbank28 0 0 BANK28 1 bank28 -
 __Lbank29 0 0 BANK29 1 bank29 -
 __Lbank30 0 0 BANK30 1 bank30 -
 __Lbank31 0 0 BANK31 1 bank31 -
-__pmaintext EC6 0 CODE 0 maintext dist/default/production/stereo_switch.production.obj
+__pmaintext EE0 0 CODE 0 maintext dist/default/production/stereo_switch.production.obj
 __Lbigram 0 0 ABS 0 bigram -
 __CFG_BORV$LO 0 0 ABS 0 - dist/default/production/stereo_switch.production.obj
 __Lcommon 0 0 ABS 0 common -
@@ -357,12 +362,12 @@ __CFG_CP$OFF 0 0 ABS 0 - dist/default/production/stereo_switch.production.obj
 __CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production/stereo_switch.production.obj
 _LATAbits 10C 0 ABS 0 - dist/default/production/stereo_switch.production.obj
 main@time 7B 0 COMMON 1 cstackCOMMON dist/default/production/stereo_switch.production.obj
-_read_adc E62 0 CODE 0 text1 dist/default/production/stereo_switch.production.obj
-stackhi 206F 0 ABS 0 - /tmp/xcXiI1E1X.obj
-stacklo 2000 0 ABS 0 - /tmp/xcXiI1E1X.obj
+_read_adc E70 0 CODE 0 text2 dist/default/production/stereo_switch.production.obj
+stackhi 206F 0 ABS 0 - /tmp/xcXrKlxwQ.obj
+stacklo 2000 0 ABS 0 - /tmp/xcXrKlxwQ.obj
 _ADCON0bits 9D 0 ABS 0 - dist/default/production/stereo_switch.production.obj
 _ADCON1bits 9E 0 ABS 0 - dist/default/production/stereo_switch.production.obj
-__end_of_read_adc E90 0 CODE 0 text1 dist/default/production/stereo_switch.production.obj
+__end_of_read_adc EA6 0 CODE 0 text2 dist/default/production/stereo_switch.production.obj
 __CFG_LVP$OFF 0 0 ABS 0 - dist/default/production/stereo_switch.production.obj
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
@@ -376,8 +381,9 @@ __CFG_STVREN$ON 0 0 ABS 0 - dist/default/production/stereo_switch.production.obj
 __Lstrings 0 0 ABS 0 strings -
 __Hreset_vec 2 0 CODE 0 reset_vec -
 _DACCON0bits 118 0 ABS 0 - dist/default/production/stereo_switch.production.obj
-__ptext1 E62 0 CODE 0 text1 dist/default/production/stereo_switch.production.obj
-__ptext2 E90 0 CODE 0 text2 dist/default/production/stereo_switch.production.obj
+__ptext1 EA6 0 CODE 0 text1 dist/default/production/stereo_switch.production.obj
+__ptext2 E70 0 CODE 0 text2 dist/default/production/stereo_switch.production.obj
+__ptext3 E3A 0 CODE 0 text3 dist/default/production/stereo_switch.production.obj
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
 __Lreset_vec 0 0 CODE 0 reset_vec -
@@ -389,7 +395,7 @@ __Lclrtext 0 0 ABS 0 clrtext -
 __CFG_PLLEN$OFF 0 0 ABS 0 - dist/default/production/stereo_switch.production.obj
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production/stereo_switch.production.obj
 __Hend_init 4 0 CODE 0 end_init -
-__end_of_init EC6 0 CODE 0 text2 dist/default/production/stereo_switch.production.obj
+__end_of_init E70 0 CODE 0 text3 dist/default/production/stereo_switch.production.obj
 __end_of_main FFC 0 CODE 0 maintext dist/default/production/stereo_switch.production.obj
 ?_read_adc 70 0 COMMON 1 cstackCOMMON dist/default/production/stereo_switch.production.obj
 __Hram 0 0 ABS 0 ram -
@@ -424,9 +430,10 @@ _ANSELAbits 18C 0 ABS 0 - dist/default/production/stereo_switch.production.obj
 # All other numeric quantities are in decimal.
 %SEGMENTS
 cinit 0 7FE FFC 2 2
-text1 0 731 E62 17 2
-text2 0 748 E90 1B 2
-maintext 0 763 EC6 9B 2
+text1 0 753 EA6 1D 2
+text2 0 738 E70 1B 2
+text3 0 71D E3A 1B 2
+maintext 0 770 EE0 8E 2
 cstackCOMMON 1 70 70 D 1
 reset_vec 0 0 0 2 2
 config 0 8007 1000E 2 2

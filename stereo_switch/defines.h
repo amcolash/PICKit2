@@ -74,15 +74,15 @@ typedef int bool;
 // Voltage threshold (from 0-1024) to trigger on state
 #define THRESHOLD     450
 
-// The value the counter needs to be at before triggering stereo on
-#define COUNTER_VALUE 8
+// The value the counter needs to be at before triggering stereo on/off
+#define COUNTER_VALUE 15
 
 // Delays for re-checking if the state has changed
 // Delay in ms
 #define CHECK_DELAY   100
 
 // Time turned on after silence in sec
-#define TRIGGER_TIME  15 //TODO, 60
+#define TRIGGER_TIME  60
 
 // RA_0 = Final Output
 // RA_1 = Temp Output
