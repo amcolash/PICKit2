@@ -22,7 +22,12 @@ void main() {
     RA1 = false;
     
     // Boot delay
-    __delay_ms(5000);
+//    __delay_ms(5000);
+    
+    for (int i = 0; i < 100; i++) {
+        RA1 = !RA1;
+        __delay_ms(50);
+    }
 
     // used to store ADC result after capture
     unsigned int audio_value;
@@ -34,10 +39,10 @@ void main() {
     int counter = 0;
     int counter_time = COUNTER_TIME;
     
+    
     while(true) {
         // Read value of audio input
         audio_value = read_adc(0x02); // RA2
-        switch_value = read_adc(0x03); // RA4
         
         // Indicator LED
         RA1 = audio_value > THRESHOLD;
@@ -82,7 +87,7 @@ void main() {
 //                if (time < 0) time = 0;
 //            }
 //
-//              switch_value = read_adc(0x03); // RA4
+//            switch_value = read_adc(0x03); // RA4
 //            // Turn on/off stereo if counter is set and time/switch combo matches
 //            if ((switch_value < 512 && time > 0 && RA1) || (switch_value >= 512 && time <= 0 && !RA1)) {
 //                RA1 = false;
@@ -151,10 +156,15 @@ void toggle_power() {
     RA0 = false;
 
     // Wait for stereo to turn on/off
-    __delay_ms(10000);
+//    __delay_ms(10000);
+    
+    for (int i = 0; i < 300; i++) {
+        RA1 = !RA1;
+        __delay_ms(50);
+    }
     
     // Wait some more since we can't do it all in one call
-    __delay_ms(5000);
+//    __delay_ms(10000);
 }
 
 // This subroutine does the ADC conversion and returns the 10 bit result

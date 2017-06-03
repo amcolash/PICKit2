@@ -26,7 +26,7 @@
 //#pragma config PWRTE = OFF      // Power-up Timer Enable (PWRT disabled)
 //#pragma config MCLRE = OFF      // MCLR Pin Function Select (MCLR/VPP pin function is MCLR)
 //#pragma config CP = OFF         // Flash Program Memory Code Protection (Program memory code protection is disabled)
-//#pragma config BOREN = OFF      // Brown-out Reset Enable (Brown-out Reset disabled)
+//#pragma config BOREN = ON       // Brown-out Reset Enable (Brown-out Reset enabled)
 //#pragma config CLKOUTEN = OFF   // Clock Out Enable (CLKOUT function is disabled. I/O or oscillator function on the CLKOUT pin)
 //#pragma config IESO = OFF       // Internal/External Switchover Mode (Internal/External Switchover Mode is disabled)
 //#pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable (Fail-Safe Clock Monitor is disabled)
@@ -54,7 +54,7 @@
 #pragma config FCMEN=OFF
 #pragma config CP=OFF
 #pragma config CPD=OFF
-#pragma config BOREN=OFF
+#pragma config BOREN=ON
 #pragma config WRT=OFF
 #pragma config STVREN=ON
 #pragma config BORV=LO
@@ -72,7 +72,7 @@ typedef int bool;
 #define false         0
 
 // Voltage threshold (from 0-1024) to trigger on state
-#define THRESHOLD     375
+#define THRESHOLD     650
 
 // The value the counter needs to be at before triggering stereo on/off
 #define COUNTER_VALUE 5
