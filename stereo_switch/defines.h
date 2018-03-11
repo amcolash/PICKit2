@@ -77,6 +77,9 @@ typedef int bool;
 // The value the counter needs to be at before triggering stereo on/off
 #define COUNTER_VALUE 5
 
+// How long to sample for - kinda? Accidentally reverted this file and so lost last value
+#define SAMPLE_TIME 5
+
 // The number of checks before resetting counter
 #define COUNTER_TIME  30
 

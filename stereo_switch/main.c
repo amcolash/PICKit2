@@ -24,82 +24,89 @@ void main() {
     // Boot delay
 //    __delay_ms(5000);
     
-    for (int i = 0; i < 100; i++) {
+    // Long enough to handle a brown out on power toggle
+    for (int i = 0; i < 50; i++) {
         RA1 = !RA1;
         __delay_ms(50);
     }
 
     // used to store ADC result after capture
     unsigned int audio_value;
-    unsigned int switch_value;
+    unsigned int led_value;
 
     // Time left before turning off stereo, int so we can make sure it stays >= 0
     int time = 0;
     // Counter to make sure things settle after turning on/off stereo
     int counter = 0;
-    int counter_time = COUNTER_TIME;
+    
     
     
     while(true) {
-        // Read value of audio input
-        audio_value = read_adc(0x02); // RA2
+        counter = 0;
         
-        // Indicator LED
-        RA1 = audio_value > THRESHOLD;
+        for (int i = 0; i < SAMPLE_TIME * 10; i++) {
+            // Read value of audio input
+            audio_value = read_adc(0x02); // RA2
 
-        if (time <= 0) {
-            counter_time--;
-            if (RA1) counter++;
+            // Indicator LED
+            RA1 = audio_value > THRESHOLD;
+
+            counter += audio_value > THRESHOLD;
             
-            if (counter_time < 0) {
-                if (counter > COUNTER_VALUE) {
-                    time = TRIGGER_TIME * 10;
-                }
+            // Turn off adc while waiting, might help with oddities that I have seen
+            ADCON0bits.ADON=0;
+            __delay_ms(CHECK_DELAY);
+        }
+        
+        led_value = read_adc(0x03); //< 512) ? false : true; // RA4 (LED), false if off, true if on
+        
+        // LED > 512 = LED is off, < 512 = LED is on
+        if (led_value > 512) {
+            // Reset time to max if threshold is met
+            if (counter >= COUNTER_VALUE) {
+                time = TRIGGER_TIME;
+            } else {
+                // Decrement if threshold not met
+                time--;
                 
-                counter = 0;
-                counter_time = COUNTER_TIME;
+                // If time runs out, turn off
+                if (time <= 0) {
+                    time = 0;
+                    toggle_power();
+                }
             }
         } else {
-            if (RA1) {
-                time = TRIGGER_TIME * 10;
-            } else {
-                time--;
-                if (time < 0) time = 0;
+            // Need to turn on since enough samples we positive
+            if (counter >= COUNTER_VALUE) {
+                time = TRIGGER_TIME;
+                toggle_power();
             }
         }
         
-        // Turn on/off stereo if counter is set and time/switch combo matches
-        if ((switch_value < 512 && time > 0 && RA1) || (switch_value >= 512 && time <= 0 && !RA1)) {
-            toggle_power();
-            RA1 = false;
-        }
-        
-//        // Increment counter, keep <= 20
-//        counter++;
-//        if (counter > COUNTER_VALUE) {
-//            counter = COUNTER_VALUE;
-//        
-//            // Set time if audio meets threshold, else decrement time till stereo turns off
-//            if (audio_value > THRESHOLD) {
-//                time = TRIGGER_TIME * 10;
+        // Code to test the different states
+//        int state = 0;
+//        if (led_value > 512) {
+//            // Reset time to max if threshold is met
+//            if (counter >= COUNTER_VALUE) {
+//                state = 1;
 //            } else {
-//                time--;
-//                if (time < 0) time = 0;
+//                state = 2;
 //            }
-//
-//            switch_value = read_adc(0x03); // RA4
-//            // Turn on/off stereo if counter is set and time/switch combo matches
-//            if ((switch_value < 512 && time > 0 && RA1) || (switch_value >= 512 && time <= 0 && !RA1)) {
-//                RA1 = false;
-//                counter = 0;
-//
-//                toggle_power();
+//        } else {
+//            // Need to turn on since enough samples we positive
+//            if (counter >= COUNTER_VALUE) {
+//                state = 3;
+//            } else {
+//                state = 4;
 //            }
 //        }
-        
-        // Turn off adc while waiting, might help with oddities that I have seen
-        ADCON0bits.ADON=0;
-        __delay_ms(CHECK_DELAY);
+//        
+//        for (int i = 0; i < state; i++) {
+//            RA1 = true;
+//            __delay_ms(1000);
+//            RA1 = false;
+//            __delay_ms(500);
+//        }
     }
 }
 
@@ -155,21 +162,13 @@ void toggle_power() {
     __delay_ms(300);
     RA0 = false;
 
-    // Wait for stereo to turn on/off
-//    __delay_ms(10000);
-    
-    for (int i = 0; i < 300; i++) {
-        RA1 = !RA1;
-        __delay_ms(50);
-    }
-    
-    // Wait some more since we can't do it all in one call
-//    __delay_ms(10000);
+    // Wait for stereo to turn on/off, need to do in multiple calls
+    __delay_ms(10000);
 }
 
 // This subroutine does the ADC conversion and returns the 10 bit result
 unsigned int read_adc(unsigned int channel) {
-    // Toggle on ADC
+    // Toggle off/on ADC
     ADCON0bits.ADON=0;
     __delay_ms(1);
     ADCON0bits.ADON=1;
