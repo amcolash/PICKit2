@@ -1,0 +1,192 @@
+[p LITE_MODE AUTOSTATIC PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 12F1822 ]
+[d frameptr 6 ]
+"32 /opt/microchip/xc8/v1.40/sources/common/awtoft.c
+[v ___awtoft __awtoft `(f  1 e 3 0 ]
+"62 /opt/microchip/xc8/v1.40/sources/common/float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 /opt/microchip/xc8/v1.40/sources/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"4 /opt/microchip/xc8/v1.40/sources/common/ftge.c
+[v ___ftge __ftge `(b  1 e 0 0 ]
+"62 /opt/microchip/xc8/v1.40/sources/common/ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"6 /opt/microchip/xc8/v1.40/sources/pic/eeprom.c
+[v _eecpymem eecpymem `(v  1 e 1 0 ]
+"39
+[v _memcpyee memcpyee `(v  1 e 1 0 ]
+"18 /home/andrew/Github/PICKit2/ultrasonic_sensor2/main.c
+[v _main main `(v  1 e 1 0 ]
+"51
+[v _gpio_init gpio_init `(v  1 e 1 0 ]
+"83
+[v _check_sensor1 check_sensor1 `(i  1 e 2 0 ]
+"104
+[v _check_sensor2 check_sensor2 `(i  1 e 2 0 ]
+[s S40 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+]
+"492 /opt/microchip/xc8/v1.40/include/pic12f1822.h
+[s S47 . 1 `uc 1 AN0 1 0 :1:0 
+`uc 1 AN1 1 0 :1:1 
+`uc 1 AN2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 AN3 1 0 :1:4 
+]
+[s S53 . 1 `uc 1 CPS0 1 0 :1:0 
+`uc 1 CPS1 1 0 :1:1 
+`uc 1 CPS2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 CPS3 1 0 :1:4 
+]
+[s S59 . 1 `uc 1 C1INP 1 0 :1:0 
+`uc 1 C1IN0N 1 0 :1:1 
+`uc 1 C1OUT 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 C1IN1N 1 0 :1:4 
+]
+[s S65 . 1 `uc 1 DACOUT 1 0 :1:0 
+`uc 1 SRI 1 0 :1:1 
+`uc 1 SRQ 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 SRNQ 1 0 :1:5 
+]
+[s S71 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 SCK 1 0 :1:1 
+`uc 1 T0CKI 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1OSO 1 0 :1:4 
+`uc 1 T1CKI 1 0 :1:5 
+]
+[s S78 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 SCL 1 0 :1:1 
+`uc 1 SDA 1 0 :1:2 
+`uc 1 nMCLR 1 0 :1:3 
+`uc 1 CLKR 1 0 :1:4 
+`uc 1 T1OSI 1 0 :1:5 
+]
+[s S85 . 1 `uc 1 MDOUT 1 0 :1:0 
+`uc 1 MDMIN 1 0 :1:1 
+`uc 1 MDCIN1 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 MDCIN2 1 0 :1:4 
+]
+[s S91 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 SDI 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 OSC2 1 0 :1:4 
+`uc 1 OSC1 1 0 :1:5 
+]
+[s S97 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 FLT0 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 CLKOUT 1 0 :1:4 
+`uc 1 CLKIN 1 0 :1:5 
+]
+[u S103 . 1 `S40 1 . 1 0 `S47 1 . 1 0 `S53 1 . 1 0 `S59 1 . 1 0 `S65 1 . 1 0 `S71 1 . 1 0 `S78 1 . 1 0 `S85 1 . 1 0 `S91 1 . 1 0 `S97 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES103  1 e 1 @12 ]
+[s S212 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+]
+"1226
+[u S219 . 1 `S212 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES219  1 e 1 @140 ]
+[s S23 . 1 `uc 1 LATA0 1 0 :1:0 
+`uc 1 LATA1 1 0 :1:1 
+`uc 1 LATA2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 LATA4 1 0 :1:4 
+`uc 1 LATA5 1 0 :1:5 
+]
+"1951
+[u S30 . 1 `S23 1 . 1 0 ]
+[v _LATAbits LATAbits `VES30  1 e 1 @268 ]
+[s S192 . 1 `uc 1 ANSA0 1 0 :1:0 
+`uc 1 ANSA1 1 0 :1:1 
+`uc 1 ANSA2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 ANSA4 1 0 :1:4 
+]
+"2593
+[s S198 . 1 `uc 1 ANSELA 1 0 :5:0 
+]
+[u S200 . 1 `S192 1 . 1 0 `S198 1 . 1 0 ]
+[v _ANSELAbits ANSELAbits `VES200  1 e 1 @396 ]
+"18 /home/andrew/Github/PICKit2/ultrasonic_sensor2/main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"27
+[v main@time time `i  1 a 2 37 ]
+"29
+[v main@sensor2 sensor2 `i  1 a 2 35 ]
+"28
+[v main@sensor1 sensor1 `i  1 a 2 33 ]
+"47
+} 0
+"51
+[v _gpio_init gpio_init `(v  1 e 1 0 ]
+{
+"77
+} 0
+"104
+[v _check_sensor2 check_sensor2 `(i  1 e 2 0 ]
+{
+"106
+[v check_sensor2@time time `i  1 a 2 29 ]
+"123
+} 0
+"83
+[v _check_sensor1 check_sensor1 `(i  1 e 2 0 ]
+{
+"85
+[v check_sensor1@time time `i  1 a 2 29 ]
+"102
+} 0
+"62 /opt/microchip/xc8/v1.40/sources/common/ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+{
+"65
+[v ___ftmul@f3_as_product f3_as_product `um  1 a 3 11 ]
+"64
+[v ___ftmul@sign sign `uc  1 a 1 15 ]
+[v ___ftmul@cntr cntr `uc  1 a 1 14 ]
+[v ___ftmul@exp exp `uc  1 a 1 10 ]
+"62
+[v ___ftmul@f1 f1 `f  1 p 3 0 ]
+[v ___ftmul@f2 f2 `f  1 p 3 3 ]
+"157
+} 0
+"4 /opt/microchip/xc8/v1.40/sources/common/ftge.c
+[v ___ftge __ftge `(b  1 e 0 0 ]
+{
+[v ___ftge@ff1 ff1 `f  1 p 3 16 ]
+[v ___ftge@ff2 ff2 `f  1 p 3 19 ]
+"13
+} 0
+"32 /opt/microchip/xc8/v1.40/sources/common/awtoft.c
+[v ___awtoft __awtoft `(f  1 e 3 0 ]
+{
+"34
+[v ___awtoft@sign sign `uc  1 a 1 13 ]
+"32
+[v ___awtoft@c c `i  1 p 2 8 ]
+"42
+} 0
+"62 /opt/microchip/xc8/v1.40/sources/common/float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+{
+[v ___ftpack@arg arg `um  1 p 3 0 ]
+[v ___ftpack@exp exp `uc  1 p 1 3 ]
+[v ___ftpack@sign sign `uc  1 p 1 4 ]
+"86
+} 0
