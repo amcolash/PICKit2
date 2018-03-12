@@ -1,21 +1,26 @@
 /**
-  Generated Main Source File
+  Generated Interrupt Manager Source File
 
-  Company:
+  @Company:
     Microchip Technology Inc.
 
-  File Name:
-    main.c
+  @File Name:
+    interrupt_manager.c
 
-  Summary:
-    This is the main file generated using PIC10 / PIC12 / PIC16 / PIC18 MCUs
+  @Summary:
+    This is the Interrupt Manager file generated using PIC10 / PIC12 / PIC16 / PIC18 MCUs
 
-  Description:
-    This header file provides implementations for driver APIs for all modules selected in the GUI.
+  @Description:
+    This header file provides implementations for global interrupt handling.
+    For individual peripheral handlers please see the peripheral driver for
+    all modules selected in the GUI.
     Generation Information :
         Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.65
         Device            :  PIC12F1822
-        Driver Version    :  2.00
+        Driver Version    :  1.03
+    The generated drivers are tested against the following:
+        Compiler          :  XC8 1.45 or later
+        MPLAB 	          :  MPLAB X 4.10
 */
 
 /*
@@ -40,40 +45,19 @@
     TERMS.
 */
 
-#include "mcc_generated_files/mcc.h"
-#include "globals.h"
+#include "interrupt_manager.h"
+#include "mcc.h"
 
-/*
-    Main application
- */
-void main(void) {
-    
-    // initialize the device
-    SYSTEM_Initialize();
-
-    // When using interrupts, you need to set the Global and Peripheral Interrupt Enable bits
-    // Use the following macros to:
-
-    // Enable the Global Interrupts
-    INTERRUPT_GlobalInterruptEnable();
-
-    // Enable the Peripheral Interrupts
-    INTERRUPT_PeripheralInterruptEnable();
-
-    // Disable the Global Interrupts
-    //INTERRUPT_GlobalInterruptDisable();
-
-    // Disable the Peripheral Interrupts
-    //INTERRUPT_PeripheralInterruptDisable();
-
-    // Init vars
-    segment = 0;
-    check = 183;
-    dir = 1;
-    counter = 0;
-    
-    while (1) {
-        IO_RA1_LAT = (uint8_t) TMR0 < check;
+void interrupt INTERRUPT_InterruptManager (void)
+{
+    // interrupt handler
+    if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
+    {
+        TMR0_ISR();
+    }
+    else
+    {
+        //Unhandled Interrupt
     }
 }
 /**

@@ -49,12 +49,14 @@
 
 #include <xc.h>
 #include "tmr0.h"
+#include "../globals.h"
 
 /**
   Section: Global Variables Definitions
 */
 
 volatile uint8_t timer0ReloadVal;
+void (*TMR0_InterruptHandler)(void);
 /**
   Section: TMR0 APIs
 */
@@ -72,8 +74,14 @@ void TMR0_Initialize(void)
     // Load the TMR value to reload variable
     timer0ReloadVal= 178;
 
-    // Clearing IF flag
+    // Clear Interrupt flag before enabling the interrupt
     INTCONbits.TMR0IF = 0;
+
+    // Enabling TMR0 interrupt
+    INTCONbits.TMR0IE = 1;
+
+    // Set Default Interrupt Handler
+    TMR0_SetInterruptHandler(TMR0_DefaultInterruptHandler);
 }
 
 uint8_t TMR0_ReadTimer(void)
@@ -97,11 +105,40 @@ void TMR0_Reload(void)
     TMR0 = timer0ReloadVal;
 }
 
-bool TMR0_HasOverflowOccured(void)
+void TMR0_ISR(void)
 {
-    // check if  overflow has occurred by checking the TMRIF bit
-    return(INTCONbits.TMR0IF);
+
+    // Clear the TMR0 interrupt flag
+    INTCONbits.TMR0IF = 0;
+
+    TMR0 = timer0ReloadVal;
+
+    if(TMR0_InterruptHandler)
+    {
+        TMR0_InterruptHandler();
+    }
+
+    // add your TMR0 interrupt custom code
 }
+
+
+void TMR0_SetInterruptHandler(void (* InterruptHandler)(void)){
+    TMR0_InterruptHandler = InterruptHandler;
+}
+
+void TMR0_DefaultInterruptHandler(void){
+    counter++;
+    if (counter > 50) {
+        counter = 0;
+
+        segment += dir;
+        if (segment >= 4) dir = -1;
+        if (segment <= 0) dir = 1;
+
+        check = 183 + segment;
+    }
+}
+
 /**
   End of File
 */

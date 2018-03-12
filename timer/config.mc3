@@ -1527,7 +1527,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="TMR0" registerAlias="TMRI" settingAlias="enable"/>
-         <value>disabled</value>
+         <value>enabled</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="Pin Module" registerAlias="IOCAF" settingAlias="IOCAF3" alias="enabled"/>
@@ -1568,8 +1568,12 @@
    </tokenMap>
    <generatedFileHashHistoryMap class="java.util.HashMap">
       <entry>
+         <file>mcc_generated_files/interrupt_manager.h</file>
+         <hash>c7c4fd5adaf7ddb5ad3dde1be1ad1e3afff1b3f417577a10be3d915e94fade1c</hash>
+      </entry>
+      <entry>
          <file>mcc_generated_files/tmr0.c</file>
-         <hash>bc849cefd3dedb683cac4e2188c720866634913df62d743ef8d07148dc0931e0</hash>
+         <hash>de27956245436c63788cbbd099671389a3a2202bd7912c0ea5f536b0636932cf</hash>
       </entry>
       <entry>
          <file>mcc_generated_files/pin_manager.h</file>
@@ -1577,7 +1581,11 @@
       </entry>
       <entry>
          <file>mcc_generated_files/mcc.h</file>
-         <hash>19bf63166973e384730363880abc4b4e83af063dc5580538d0c9f81775ef09a5</hash>
+         <hash>3e62ce7e097954d76b0cbe7e13ef6f2b286738fa2efa77bc29d703bfdb1241fd</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files/interrupt_manager.c</file>
+         <hash>9f4009b05891afd0e1db862f666afd80993a657be54496c187cf260d0b191c4f</hash>
       </entry>
       <entry>
          <file>mcc_generated_files/mcc.c</file>
@@ -1585,7 +1593,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files/tmr0.h</file>
-         <hash>9371f1c6322b26da653c21f2c20b27ac5e4452691b7853ac57b5755349cb3699</hash>
+         <hash>cc14748b92386eea3bfe98ac942919dd0806e53b660a09d69a2a06bacbdb4675</hash>
       </entry>
       <entry>
          <file>mcc_generated_files/pin_manager.c</file>
