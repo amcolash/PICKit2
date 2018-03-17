@@ -54,10 +54,10 @@ const unsigned char EEPROM_ADDRESS = 0x00;
 void main(void)
 {
     uint8_t angle; // between MIN/MAX
-    uint8_t increment;
     
     int i;
     int duration;
+    bool stage1 = true;
     
     // initialize the device
     SYSTEM_Initialize();
@@ -65,8 +65,11 @@ void main(void)
     // Wait for things to settle before reading EEPROM
     __delay_ms(100);
     
-    unsigned char boot_count = EEPROM_ReadByte(EEPROM_ADDRESS);  // Read the data from memoryLocation 0x00
-    EEPROM_WriteByte(EEPROM_ADDRESS, boot_count + 1);            // Write the data at memoryLocation 0x00
+    // Read the previous boot count from eeprom memoryLocation 0x00
+    unsigned char boot_count = EEPROM_ReadByte(EEPROM_ADDRESS);
+    
+    // Write our new boot count at eeprom memoryLocation 0x00
+    EEPROM_WriteByte(EEPROM_ADDRESS, boot_count + 1);
 
     // Seed our random generator with the boot count (I think this will overflow eventually)
     srand(boot_count);
@@ -81,7 +84,6 @@ void main(void)
     //INTERRUPT_PeripheralInterruptEnable();
 
     angle = MIN;
-    increment = 2;
     
     i = 0;
     duration = 100;
@@ -95,20 +97,15 @@ void main(void)
             if (i > duration) {
                 i = 0;
                 
-                // Spin back and forth
-//                angle += increment;
-//                if (angle > MAX) {
-//                    increment = -2;
-//                    angle = MAX;
-//                }
-//                
-//                if (angle < MIN) {
-//                    increment = 2;
-//                    angle = MIN;
-//                }
+                // Choose a random duration, stage1 has a long delay, otherwise quick delay
+                if (stage1) {
+                    duration = (rand() % 2000) + 1000;
+                } else {
+                    duration = (rand() % 200) + 50;
+                }
                 
-                // Choose a random duration
-                duration = (rand() % 2000) + 1000;
+                // Invert if we have a long or short delay next
+                stage1 = !stage1;
                 
                 // Choose a random angle
                 angle = (rand() % (MAX - MIN)) + MIN;
