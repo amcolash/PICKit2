@@ -71,14 +71,14 @@ typedef int bool;
 #define true          1
 #define false         0
 
-// Voltage threshold (from 0-1024) to trigger on state
-#define THRESHOLD     650
+// Voltage threshold (from 0-1024, higher is louder) to trigger on state
+#define THRESHOLD     600
 
 // The value the counter needs to be at before triggering stereo on/off
 #define COUNTER_VALUE 5
 
 // How long to sample for - kinda? Accidentally reverted this file and so lost last value
-#define SAMPLE_TIME 5
+#define SAMPLE_TIME 2
 
 // The number of checks before resetting counter
 #define COUNTER_TIME  30
@@ -88,7 +88,7 @@ typedef int bool;
 #define CHECK_DELAY   100
 
 // Time turned off after silence in sec
-#define TRIGGER_TIME  60
+#define TRIGGER_TIME  30
 
 // RA_0 = Final Output
 // RA_1 = Temp Output

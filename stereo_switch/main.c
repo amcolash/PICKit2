@@ -22,8 +22,6 @@ void main() {
     RA1 = false;
     
     // Boot delay
-//    __delay_ms(5000);
-    
     // Long enough to handle a brown out on power toggle
     for (int i = 0; i < 50; i++) {
         RA1 = !RA1;
@@ -38,8 +36,6 @@ void main() {
     int time = 0;
     // Counter to make sure things settle after turning on/off stereo
     int counter = 0;
-    
-    
     
     while(true) {
         counter = 0;
