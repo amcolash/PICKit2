@@ -46,6 +46,12 @@
 const uint8_t MIN = 16;
 const uint8_t MAX = 40;
 
+const uint16_t STAGE_1_MIN = 1000;
+const uint16_t STAGE_1_MAX = 3000;
+
+const uint16_t STAGE_2_MIN = 150;
+const uint16_t STAGE_2_MAX = 350;
+
 const unsigned char EEPROM_ADDRESS = 0x00;
 
 /*
@@ -55,9 +61,11 @@ void main(void)
 {
     uint8_t angle; // between MIN/MAX
     
-    int i;
+    int time;
+    int motor;
     int duration;
-    bool stage1 = true;
+    bool stage1;
+    int speed;
     
     // initialize the device
     SYSTEM_Initialize();
@@ -85,23 +93,43 @@ void main(void)
 
     angle = MIN;
     
-    i = 0;
+    time = 0;
     duration = 100;
+    stage1 = true;
+    speed = 1;
+
+    // Initial LED setup
+    IO_RA0_SetLow();
+    IO_RA1_SetHigh();
+    IO_RA2_SetHigh();
+
     
     while (1)
-    {   
+    {
+        // RA0 - Red
+        // RA1 - Green
+        // RA2 - Blue
+        // RA4 - Servo
+        
         if (TMR2_HasOverflowOccured()) {
-            IO_RA1_Toggle();
-            
-            i++;
-            if (i > duration) {
-                i = 0;
+            // Servo toggle
+            IO_RA4_Toggle();
+     
+            time++;
+            if (time > duration) {
+                
+                motor = 0;
+                time = 0;
                 
                 // Choose a random duration, stage1 has a long delay, otherwise quick delay
                 if (stage1) {
-                    duration = (rand() % 2000) + 1000;
+                    duration = (rand() % (STAGE_1_MAX - STAGE_1_MIN)) + STAGE_1_MIN;
+                    IO_RA0_SetLow();
+                    IO_RA1_SetHigh();
                 } else {
-                    duration = (rand() % 200) + 50;
+                    duration = (rand() % (STAGE_2_MAX - STAGE_2_MIN)) + STAGE_2_MIN;
+                    IO_RA0_SetHigh();
+                    IO_RA1_SetLow();
                 }
                 
                 // Invert if we have a long or short delay next
@@ -109,9 +137,10 @@ void main(void)
                 
                 // Choose a random angle
                 angle = (rand() % (MAX - MIN)) + MIN;
+//                angle = stage1 ? MAX : MIN;
             }
             
-            if (IO_RA1_LAT == 0) {
+            if (IO_RA4_LAT == 0) {
                 // 0XF9 -> 20ms, but using slightly less since we have instructions in both cycles
                 TMR2_SetPeriod(0xF0 - angle);
             } else {

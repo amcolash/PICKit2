@@ -30,12 +30,19 @@ void main() {
     
     while (1) {
         sensor1 = check_sensor1();
-        sensor2 = check_sensor2();
+//        sensor2 = check_sensor2();
+        
+        // since we are not checking sensor2, adding in a delay to try and mimic the same timing
+        // may or may not actually be more or less accurate /shrug
+        __delay_ms(20);
 
-        if (sensor1 && !sensor2) {
+//        if (sensor1 && !sensor2) {
+//            time = TRIGGER_TIME * 2;
+//        } else if (sensor2) {
+//            time = 0;
+        
+        if (sensor1) {
             time = TRIGGER_TIME * 2;
-        } else if (sensor2) {
-            time = 0;
         } else {
             time--;
             if (time < 0) time = 0; // prevent underflow
