@@ -36,6 +36,10 @@ void main() {
     int time = 0;
     // Counter to make sure things settle after turning on/off stereo
     int counter = 0;
+    // previous led value
+    unsigned int last_led_value = 0;
+    // timeout from manual power toggle
+    int manual_timer = 0;
     
     while(true) {
         counter = 0;
@@ -56,8 +60,29 @@ void main() {
         
         led_value = read_adc(0x03); //< 512) ? false : true; // RA4 (LED), false if off, true if on
         
-        // LED > 512 = LED is off, < 512 = LED is on
-        if (led_value > 512) {
+        // Handle manual power on / off
+        if (last_led_value > 512 && led_value <= 512 && time > 0) {
+            // If was on and now is off, turn off power
+            time = 0;
+            counter = 0;
+            manual_timer = TRIGGER_TIME;
+        } else if (last_led_value <= 512 && led_value > 512) {
+            // If was off and now is on, turn on power
+            counter = COUNTER_VALUE + 1;
+            manual_timer = TRIGGER_TIME;
+        }
+        
+        // Save last value
+        last_led_value = led_value;
+        
+        // If in manual state, stop here
+        if (manual_timer > 0) {
+            manual_timer--;
+            continue;
+        }
+        
+        // led_value > 512 = LED is on, led_value < 512 = LED is off
+        if (led_value > 512) { // LED on
             // Reset time to max if threshold is met
             if (counter >= COUNTER_VALUE) {
                 time = TRIGGER_TIME;
@@ -71,7 +96,7 @@ void main() {
                     toggle_power();
                 }
             }
-        } else {
+        } else { // LED off
             // Need to turn on since enough samples we positive
             if (counter >= COUNTER_VALUE) {
                 time = TRIGGER_TIME;

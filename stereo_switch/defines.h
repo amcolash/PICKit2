@@ -61,34 +61,34 @@
 #pragma config LVP=OFF
 
 // this is used by the __delay_ms(xx) and __delay_us(xx) functions
-#define _XTAL_FREQ    16000000
+#define _XTAL_FREQ 16000000
 
 // Defines for input / output and booleans
-#define OUTPUT        0
-#define INPUT         1
+#define OUTPUT 0
+#define INPUT 1
 
 typedef int bool;
-#define true          1
-#define false         0
+#define true 1
+#define false 0
 
 // Voltage threshold (from 0-1024, higher is louder) to trigger on state
-#define THRESHOLD     600
+#define THRESHOLD 200 /// was 375
 
 // The value the counter needs to be at before triggering stereo on/off
-#define COUNTER_VALUE 5
+#define COUNTER_VALUE 4
 
 // How long to sample for - kinda? Accidentally reverted this file and so lost last value
 #define SAMPLE_TIME 2
 
 // The number of checks before resetting counter
-#define COUNTER_TIME  30
+#define COUNTER_TIME 30
 
 // Delays for re-checking if the state has changed
 // Delay in ms
-#define CHECK_DELAY   100
+#define CHECK_DELAY 100
 
-// Time turned off after silence in sec
-#define TRIGGER_TIME  30
+// Time turned off after silence (not seconds, sec ~ 1.5 * TRIGGER_TIME)
+#define TRIGGER_TIME 30
 
 // RA_0 = Final Output
 // RA_1 = Temp Output
